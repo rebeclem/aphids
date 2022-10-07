@@ -20,5 +20,5 @@ First, let's set up our sequences:
     * `mv Frozen_release/Annotation_only/Myzus*/*/*.aa.fa myzus/aa/`
     * `mv Frozen_release/Annotation_only/Myzus*/*/*.cds.fa myzus/cds/`
 
-Hmm.. missing *Aphis rumicis*. There's only scaffolds. There are other genomes for Myzus persicae.
+Hmm.. missing *Aphis rumicis*. There's only scaffolds. There are other genomes for [Myzus persicae](https://bipaa.genouest.org/sp/myzus_persicae/download/annotation/OGS2.0/). Transfer this one to the Myzus folder as well.
 4) 
