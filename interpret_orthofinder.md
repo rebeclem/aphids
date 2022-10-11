@@ -30,3 +30,9 @@ Orthogroups shared between species	Orthogroups_SpeciesOverlaps.tsv
 ```
 
 95% of our 92101 genes were assigned to orthogroups! (Fewer than 80% is problematic)
+
+## Difference between raw and LPTG files
+
+| --- | Raw | LPTG |
+| Number of genes | 
+
