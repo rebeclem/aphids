@@ -20,5 +20,7 @@ First, let's set up our sequences:
     * `mv Frozen_release/Annotation_only/Myzus*/*/*.aa.fa myzus/aa/`
     * `mv Frozen_release/Annotation_only/Myzus*/*/*.cds.fa myzus/cds/`
 
+3)At the end of this, using the commands `ls aphis/*` and `ls myzus/*` you should see that both your cds and aa directories should have four fasta files in them.
+
 Hmm.. missing *Aphis rumicis*. There's only scaffolds. There are other genomes for [Myzus persicae](https://bipaa.genouest.org/sp/myzus_persicae/download/annotation/OGS2.0/). Transfer this one to the Myzus folder as well.
-4) 
+4) Make a directories in aphis and myzus called aa_LTPG and cds_LTPG and transfer files to these
