@@ -19,8 +19,13 @@ First, let's set up our sequences:
     * `mv Frozen_release/Annotation_only/Aphis*/*.cds.fa aphis/cds/`
     * `mv Frozen_release/Annotation_only/Myzus*/*/*.aa.fa myzus/aa/`
     * `mv Frozen_release/Annotation_only/Myzus*/*/*.cds.fa myzus/cds/`
+    * Note, for  *Aphis rumicis*, There's only scaffolds, so we won't use it at this stage.
+    * There are other genomes for [Myzus persicae](https://bipaa.genouest.org/sp/myzus_persicae/download/annotation/OGS2.0/). Transfer this one to the Myzus folder as well.
+3) At the end of this, using the commands `ls aphis/*` and `ls myzus/*` you should see that both your cds and aa directories should have four fasta files in them in aphis, and five files in myzus.
+4) Make a directories in aphis and myzus called aa_LTPG and cds_LTPG and transfer files to these, so we can test and see if using the longest transcript per gene makes a difference.
+5) Allocate an interactive node to run the analysis on CERES using `alloc`
+6) Load the orthofinder module (`module load orthofinder`) and run the command `orthofinder -f aphis/aa`
+7) Orthofinder recommends using only the longest transcript variant per gene. To extract these from the myzus genomes we uploaded, use the command: `for f in *fa ; do python scripts/primary_transcript.py $f ; done
 
-3)At the end of this, using the commands `ls aphis/*` and `ls myzus/*` you should see that both your cds and aa directories should have four fasta files in them.
 
-Hmm.. missing *Aphis rumicis*. There's only scaffolds. There are other genomes for [Myzus persicae](https://bipaa.genouest.org/sp/myzus_persicae/download/annotation/OGS2.0/). Transfer this one to the Myzus folder as well.
-4) Make a directories in aphis and myzus called aa_LTPG and cds_LTPG and transfer files to these
+Next: [Interpret Orthofinder Results](interpret_orthofinder.md)
