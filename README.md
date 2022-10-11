@@ -12,6 +12,7 @@ Here, we are looking at introgression and hybridization in two genera of aphids:
 
 0) First, we need a set of genomes that have been assembled and annotated. The genomes from Mathers et al. 2022 are available on [zenodo](https://zenodo.org/record/5908005#.YzxkkuzMIeZ)
 1) Next, we need to find a set of [orthologs](orthologs.md) with the amino acids
+    * 1b. [Interpret Orthofinder Results](interpret_orthofinder.md)
 2) Find the corresponding nucleotides to the amino acids
 3) Map genomes from this project to the nucleotide orthologs
 4) Build a tree using the orthologs
