@@ -33,6 +33,13 @@ Orthogroups shared between species	Orthogroups_SpeciesOverlaps.tsv
 
 ## Difference between raw and LPTG files
 
-| --- | Raw | LPTG |
-| Number of genes | 
+| --- | Aphis_all | Aphis_LPTG | Myzus_all | Myzus_LPTG |
+| --- | --- | --- | --- | --- | 
+| Number of taxa | 4 | 4 | 5 | 5 |
+| Number of genes | 92101 | 83379 | 119918 | 110955 |
+| Percent of genes in orthogroups | 95.0 | 94.6 | 94.0 | 93.2 |
+| Number of orthogroups | 16961 | 16265 | 18629 | 17481 |
+| Number of orthogroups with all species present | 10799 | 10560 | 10553 | 10176 |
+| Number of single-copy orthogroups | 6893 | 8631 | 6203 | 7064 |
 
+Genomes that include only the LTPG (longest transcript per gene) have fewer total genes, and a slightly smaller percent added to orthogroups, fewer orthgroups and fewer orthogroups with all species present. However, there are more single-copy orthogroups.
