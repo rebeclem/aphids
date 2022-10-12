@@ -42,4 +42,15 @@ Orthogroups shared between species	Orthogroups_SpeciesOverlaps.tsv
 | Number of orthogroups with all species present | 10799 | 10560 | 10553 | 10176 |
 | Number of single-copy orthogroups | 6893 | 8631 | 6203 | 7064 |
 
-Genomes that include only the LTPG (longest transcript per gene) have fewer total genes, and a slightly smaller percent added to orthogroups, fewer orthgroups and fewer orthogroups with all species present. However, there are more single-copy orthogroups.
+Genomes that include only the LTPG (longest transcript per gene) have fewer total genes, and a slightly smaller percent added to orthogroups, fewer orthgroups and fewer orthogroups with all species present. However, there are more single-copy orthogroups. 
+
+We can also look at the per species statistics using cat `aa_LTPG/OrthoFinder/Results_Oct11/Comparative_Genomics_Statistics/Statistics_PerSpecies.tsv` and find that all the species have at least 90% of their genes in orthogroups.
+
+# Species trees
+
+You can download and look at a tree using a tree, viewer. However, for now, since it's only a few species, we'll just look at the file `cat ../aphis/aa_LTPG/OrthoFinder/Results_Oct11/Species_Tree/SpeciesTree_rooted.txt`. We find that `((Aphis_glycines:0.0505149,Aphis_gossypii:0.0328713)0.759754:0.019426,(Aphis_thalictri:0.0549169,Aphis_fabae:0.0487621)0.759754:0.019426);`
+
+This tells us that *A. glycines* is sister to *A. gossypii* and *A. thalictri* is sister to *A. fabae*. Let's check this relationship with the literature.
+
+For *Myzus*, we find: `((Myzus_cerasi:0.0494855,Myzus_lythri:0.0502962)0.706958:0.0138003,(Myzus_varians:0.0488933,(Myzus_persicae:0.0312069,Myzus_ligustri:0.0419441)0.630307:0.0233248)0.706958:0.0138003);`
+*M. cerasi* and *M. lythri* are sister to each other, and together are sister to the group that includes the other three, with *M. persicae* and *M. ligustri* sister to each other and *M. varians* sister to them both.
