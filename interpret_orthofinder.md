@@ -56,13 +56,17 @@ For *Myzus*, we find: `((Myzus_cerasi:0.0494855,Myzus_lythri:0.0502962)0.706958:
 *M. cerasi* and *M. lythri* are sister to each other, and together are sister to the group that includes the other three, with *M. persicae* and *M. ligustri* sister to each other and *M. varians* sister to them both.
 
 <details>
-<summary>*Myzus* tree</summary>
+<summary> *Myzus* tree</summary>
 <br>
-![*Myzus* phylogeny](myzus_phylogeny_Rebijith2017.jpg)
+
+  ![phylogeny1](figs/myzus_phylogeny_Rebijith2017.png)
+  
 </details>
 
 <details>
-<summary>*Aphis* tree</summary>
+<summary> *Aphis* tree</summary>
 <br>
-![*Aphis* phylogeny](aphis_phylogeny_Rebijith2017.jpg)
+
+  ![phylogeny2](figs/aphis_phylogeny_Rebijith2017.png)
+  
 </details>
