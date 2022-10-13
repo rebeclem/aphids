@@ -54,3 +54,15 @@ This tells us that *A. glycines* is sister to *A. gossypii* and *A. thalictri* i
 
 For *Myzus*, we find: `((Myzus_cerasi:0.0494855,Myzus_lythri:0.0502962)0.706958:0.0138003,(Myzus_varians:0.0488933,(Myzus_persicae:0.0312069,Myzus_ligustri:0.0419441)0.630307:0.0233248)0.706958:0.0138003);`
 *M. cerasi* and *M. lythri* are sister to each other, and together are sister to the group that includes the other three, with *M. persicae* and *M. ligustri* sister to each other and *M. varians* sister to them both.
+
+<details>
+<summary>*Myzus* tree</summary>
+<br>
+![*Myzus* phylogeny](myzus_phylogeny_Rebijith2017.jpg)
+</details>
+
+<details>
+<summary>*Aphis* tree</summary>
+<br>
+![*Aphis* phylogeny](aphis_phylogeny_Rebijith2017.jpg)
+</details>
