@@ -56,7 +56,7 @@ For *Myzus*, we find: `((Myzus_cerasi:0.0494855,Myzus_lythri:0.0502962)0.706958:
 *M. cerasi* and *M. lythri* are sister to each other, and together are sister to the group that includes the other three, with *M. persicae* and *M. ligustri* sister to each other and *M. varians* sister to them both.
 
 <details>
-<summary> *Myzus* tree</summary>
+<summary> Myzus tree</summary>
 <br>
 
   ![phylogeny1](figs/myzus_phylogeny_Rebijith2017.png)
@@ -64,9 +64,21 @@ For *Myzus*, we find: `((Myzus_cerasi:0.0494855,Myzus_lythri:0.0502962)0.706958:
 </details>
 
 <details>
-<summary> *Aphis* tree</summary>
+<summary>Aphis tree</summary>
 <br>
 
   ![phylogeny2](figs/aphis_phylogeny_Rebijith2017.png)
   
 </details>
+
+<details>
+<summary> Mathers genomic tree</summary>
+<br>
+
+  ![phylogeny3](figs/phylogeny_mathers_2022.png)
+  
+</details>
+
+The Rebijith et al. tree doesn't have enough of the taxa, but the Mathers tree has the same relationships we found with our tree.
+
+Next: [Setup to run HybPiper](hybpiper_setup.md)
