@@ -19,6 +19,7 @@
 5) Next, we need to gather the unannotated genomes for *Aphis* and *Myzus* as well as outgroups and put them in a directory called `unannotated_genomes`. For *Myzus*, we will use outgroups *Dysaphis* and *Brachycaudus*. For *Aphis*, we will use outgroups *Melanaphis* and *Hyalopterus*.
     * Upload the tissue bank csv to the raw data file `rsync -avh aphid_tissues.csv rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/raw_data`.
     * Put the *Aphis* and *Myzus* into different cvs files with `grep "Aphis," aphid_tissues.csv > aphis_accessions.csv`, and `grep "Myzus," aphid_tissues.csv > myzus_accessions.csv`.
-    * Put the outgroups into their own files using 'grep -E "Brachycaudus|Dysaphis" aphid_tissues.csv > myzus_outgroup.csv` and `grep -E "Melanaphis,|Hyalopterus" aphid_tissues.csv > aphis_outgroup.csv`
+    * Put the outgroups into their own files using `grep -E "Brachycaudus|Dysaphis" aphid_tissues.csv > myzus_outgroup.csv` and `grep -E "Melanaphis,|Hyalopterus" aphid_tissues.csv > aphis_outgroup.csv`
 7) Now, since HybPiper is not one of the modules loaded on CERES, we will need to [install it using conda](https://scinet.usda.gov/guide/conda/). If you already have installed the bioconda channels, use the commmands `module load miniconda`, `conda create -n hybpiper -c chrisjackson-pellicle hybpiper` and `conda activate hybpiper` to install on CERES. When you log back in later, you will only need to use `module load miniconda` and then `conda activate hybpiper`
-8) 
+
+Next step: [Set up, clean and trim raw reads](cleantrim.md)
