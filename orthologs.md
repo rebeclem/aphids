@@ -23,11 +23,12 @@ First, let's set up our sequences:
     * There are other genomes for [Myzus persicae](https://bipaa.genouest.org/sp/myzus_persicae/download/annotation/OGS2.0/). Transfer this one to the Myzus folder as well.
 3) At the end of this, using the commands `ls aphis/*` and `ls myzus/*` you should see that both your cds and aa directories should have four fasta files in them in aphis, and five files in myzus.
 4) Make a directories in aphis and myzus called aaLTPG and cdsLTPG and transfer files to these, so we can test and see if using the longest transcript per gene makes a difference.
-5) Rename the files--add four letter code and identifier to the beginning. I'll do this manually since there's only a few. Then, in the aaLTPG directory, load the python module and run the python script [name_change.py](scripts/name_change.py) to change the names of the fasta sequences to include the names using the command `python3 ../../scripts/name_change.py`.
 6) Allocate an interactive node to run the analysis on CERES using `alloc`
-7) Load the orthofinder module (`module load orthofinder`) and run the command `orthofinder -f aphis/aa`. This may take up to an hour.
-8) Orthofinder recommends using only the longest transcript variant per gene. To extract these from the myzus genomes we uploaded, use the command: `for f in *fa ; do python scripts/primary_transcript.py $f ; done
-    * Alternatively, use the script [orthofinder.sh](scripts/orthofinder.sh)
+7) Rename the files--add four letter code and identifier to the beginning. I'll do this manually since there's only a few. Then, in the aaLTPG directory, load the python module `module load python_3` and run the python script [name_change.py](scripts/name_change.py) to change the names of the fasta sequences to include the names using the command `python3 ../../scripts/name_change.py`.
+8) Make a directory for the raw files and move original files there `mv *G.fa raw_files`
+9) Load the orthofinder module (`module load orthofinder`) and run the command `orthofinder -f aphis/aa`. This may take up to an hour.
+10) Orthofinder recommends using only the longest transcript variant per gene. To extract these from the myzus genomes we uploaded, use the command: `for f in *fa ; do python scripts/primary_transcript.py $f ; done
+    * Alternatively, use the script [orthofinder.sh](scripts/orthofinder.sh), and run using `sbatch scripts/orthofinder.sh` from the becca directory.
 
 
 Next: [Interpret Orthofinder Results](interpret_orthofinder.md)
