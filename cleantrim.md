@@ -12,6 +12,6 @@ However, we only want to do this for the sequences we will be using, so the *Aph
   for f in *.gz; do fprefix="${f%%_*}"; if grep "$fprefix" ../new_aphid_names.txt; then mv $f ../aphis_myzus/; else echo "$fprefix"; echo "not present"; fi; done
   ```
   This command loops through all the files that end in gz, takes just the prefix before the first underscore, searches for the prefix in the file we just made, then moves the matching files to the aphis_myzus directory.
-5) 
+5) This should have copied over 62 files. Check to make sure there are 62 files with `ls aphis_myzus | wc -l`. (Note: we expected 64 files from the 32 taxa in new_aphid_names.txt, but APHD00102 is missing because the qubit was too low)
 
 
