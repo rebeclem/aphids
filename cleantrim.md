@@ -13,5 +13,6 @@ However, we only want to do this for the sequences we will be using, so the *Aph
   ```
   This command loops through all the files that end in gz, takes just the prefix before the first underscore, searches for the prefix in the file we just made, then moves the matching files to the aphis_myzus directory.
 5) This should have copied over 62 files. Check to make sure there are 62 files with `ls aphis_myzus | wc -l`. (Note: we expected 64 files from the 32 taxa in new_aphid_names.txt, but APHD00102 is missing because the qubit was too low)
+6) Next, run fastqc on the files. In the aphis_myzus directory, make a directory called fastqc_out. Load the fastqc module (`module load fastqc`), then run the command: `fastqc -l fastqc_out/ -f fastq *.gz`.
 
 
