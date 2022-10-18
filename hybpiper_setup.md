@@ -1,11 +1,11 @@
 # Setting up files for HybPiper
 
 1) We now have a file with the amino acid sequences that are single-species orthologs. Make a directory in the myzus and aphis directories and call it `hybpiper_aa`. Transfer these files to that directory.
-    * Actually I don't know which files these are
     * `Orthogroups/Orthogroups_SingleCopyOrthologues.txt` has a list of all the orthogroups that are single copy.
     * All these sequences (there are 8631) are in the Single_Copy_Orthologue_Sequences folder, but each of these fasta files has 4 sequences in it. I guess we can concatenate all of these into a single file.
-    * In the `hybpiper_aa` directory, type the command: `cat ../aa_LTPG/OrthoFinder/Results_Oct11/Single_Copy_Orthologue_Sequences/* > single_copy_all_targets.fa`
-    * You should have a file with 8631 orthogroups. Check the number of sequences in this file with `wc -l single_copy_all_targets.fa`. There should be 34,524 lines (4 different species with 8631 orthogroups).
+    * First, let's add the name of the orthogroup to each of the sequences. Allocate an interactive node `salloc`, load the python module and virtual environment, then add the names of the OG to the descriptions of each sequence using the command `python ~/90day_aphid/scripts/name_change2.py`
+    * In the `hybpiper_aa` directory, type the command: `cat ../aaLTPG/OrthoFinder/Results_Oct14/Single_Copy_Orthologue_Sequences/* > single_copy_all_targets.fa`
+    * You should have a file with 8631 orthogroups. Check the number of sequences in this file with `grep ">" single_copy_all_targets.fa | wc -l`. There should be 34,524 sequences (4 different species with 8631 orthogroups).
 3) Now we need to get a file with the corresponding nucleotide sequences. Make a file called hybpiper_cds and navigate into it. 
     * Let's make a file of the list of names from the amino acid sequence: `grep ">" ../hybpiper_aa/single_copy_all_targets.fa > genes_list.txt`
     * Now remove the karots from this file using `sed 's/>//' genes_list.txt > genes_names.txt`
