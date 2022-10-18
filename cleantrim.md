@@ -17,6 +17,8 @@ However, we only want to do this for the sequences we will be using, so the *Aph
 6) Next, run fastqc on the files. In the aphis_myzus directory, make a directory called fastqc_out. Load the fastqc module (`module load fastqc`), then run the command: `fastqc -l fastqc_out/ -f fastq *.gz`. Or, run the samples all at once using an array and [fastqc.sh](scripts/fastqc.sh) with the command `sbatch ../../scripts/fastqc.sh` from the aphis_myzus directory.
 7) This will produce a list of html files in the fastqc_out directory. Download them to your computer to look at them. Open a new terminal window and use the command: `rsync -avh rebecca.clement@ceres.scinet.usda.gov:/home/rebecca.clement/90day_aphid/raw_data/aphis_myzus/fastqc_out/*.html /Downloads`. In a finder window, single click on one of the html files and then press the space bar. Use the arrow keys to go through the fastq files. Check that the per base sequence quality stays in the green zone.
 8) Now run trimmomatic using the [trimmomatic.sh](scripts/trimmomatic.sh) script.
+    * First make a list of filenames using `aphis_myzus]$ for f in *R1_001.fastq.gz; do filename=${f%%_*}; echo $filename >> filenames.txt; done`
+    * Then we'll use this command to run the files from the text file.
     ```
     java -jar /software/7/apps/trimmomatic/0.38/trimmomatic-0.38.jar PE -threads 10 -phred33 R1.fq R2.fq ILLUMINACLIP:/software/7/apps/trimmomatic/0.38/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
     ```
