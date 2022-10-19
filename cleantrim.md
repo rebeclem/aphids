@@ -7,7 +7,7 @@ However, we only want to do this for the sequences we will be using, so the *Aph
 1) Let's combine these into one file. In the raw_data directory, use `cat aphis_accessions.csv aphis_outgroup.csv myzus_accessions.csv myzus_outgroup.csv > project_aphis_myzus.csv`. This file should have 32 lines in it. (Use `wc -l project_aphis_myzus.csv` to check). This includes, 17 *Aphis* species, 8 *Myzus* species, 3 *Aphis* outgroups and 4 *Myzus* outgroups. Vim the `project_aphis_myzus.csv` file and change line 20 to read `APHDOO305,,,,Melanaphis,donacis,,,,,,` at the beginning.
 2) Use the [parse_csv.py](scripts/parse_csv.py] file to make this csv file into a text file "new_aphid_names.txt" that includes old names, new names, and taxonoimc info. In the raw_data directory, after loading the python_3 module and activating the virtual environment, use `python ../scripts/parse_csv.py`.
 3) Next, make a directory called aphis_myzus in the raw_data directory to move the matching files to: `mkdir aphis_myzus`.
-4) Navigate to the "aphid_raw_shotgun_sequencing" file and do the following
+4) Navigate to the "aphid_raw_shotgun_sequencing" file and do the following to move just the sequences that are in the names list to the aphis_myzus directory.
   ```
   for f in *.gz; do fprefix="${f%%_*}"; if grep "$fprefix" ../new_aphid_names.txt; then mv $f ../aphis_myzus/; else echo "$fprefix"; echo "not present"; fi; done
   ```
@@ -18,7 +18,7 @@ However, we only want to do this for the sequences we will be using, so the *Aph
 7) This will produce a list of html files in the fastqc_out directory. Download them to your computer to look at them. Open a new terminal window and use the command: `rsync -avh rebecca.clement@ceres.scinet.usda.gov:/home/rebecca.clement/90day_aphid/raw_data/aphis_myzus/fastqc_out/*.html /Downloads`. In a finder window, single click on one of the html files and then press the space bar. Use the arrow keys to go through the fastq files. Check that the per base sequence quality stays in the green zone.
 8) Now run trimmomatic using the [trimmomatic.sh](scripts/trimmomatic.sh) script.
     * First make a list of filenames using `aphis_myzus]$ for f in *R1_001.fastq.gz; do filename=${f%%_*}; echo $filename >> filenames.txt; done`
-    * Then we'll use this command to run the files from the text file.
+    * Then we'll use this command to run the files from the text file: `sbatch ../../scripts/trimmomatic.sh`. This uses the following command.
     ```
     java -jar /software/7/apps/trimmomatic/0.38/trimmomatic-0.38.jar PE -threads 10 -phred33 R1.fq R2.fq ILLUMINACLIP:/software/7/apps/trimmomatic/0.38/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
     ```
