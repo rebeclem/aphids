@@ -24,5 +24,7 @@ However, we only want to do this for the sequences we will be using, so the *Aph
     ```
     * This script removes illumina adapters, removes low quality or N bases below 3 from both leading or trailing, scans the read with a 4-base sliding window and cut when the quality per base drops below 15, and drop reads below 36 bases long.
 9) After you run trimmomatic, you should have A trim and single file fo each of your original fastq sequences. Let's run fastqc again on the new sequences. Make a directory in aphis_myzus called "raw_seqs" and move all files that end in 001.fastq.gz there. `mv *_001.fastq.gz raw_seqs/`. Then change the upper limit of the array to 124 in the script and run `sbatch ../../scripts/fastqc.sh`. Download the seqs as in step 7 and make sure everything looks OK. 
+10) Now we need to move the files to either the hybpiper_cds files?
 
+Next step: [Run HybPiper](hybpiper.md)
 
