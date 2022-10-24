@@ -10,4 +10,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Aphids
 
-Aphids are very interesting
+Aphids are very interesting. They are very cool.
