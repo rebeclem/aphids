@@ -24,7 +24,7 @@
     * `seqtk subseq ../cdsLTPG/MVAR_final.fasta genes_names.txt > targets_MVAR_cds.fa`
     * Put them all together using `cat targets_* > targets_all_cds.fa`
     * Count the number of sequences. `grep ">" targets_all_cds.fa | wc -l`. You should have the same number as in the single_copy_all_targets.fa amino acid file.
-5) We actually want to put the OG number back onto each sequence. Run `python ../../scripts/name_change3.py` in each of the hybpiper_cds directories.
+5) We actually want to put the OG number back onto each sequence. The [HybPiper documentation](https://github.com/mossmatters/HybPiper/wiki) says that the target file should  include the target source and the protein ID, separated by a hyphen. In our case, this will be the four letter code and the OG sequence (example: CCED-OG0008980). Run `python ../../scripts/name_change3.py` in each of the hybpiper_cds directories.
 6) Next, we need to gather the unannotated genomes for *Aphis* and *Myzus* as well as outgroups and put them in a directory called `unannotated_genomes`. For *Myzus*, we will use outgroups *Dysaphis* and *Brachycaudus*. For *Aphis*, we will use outgroups *Melanaphis* and *Hyalopterus*.
     * Upload the tissue bank csv to the raw data file `rsync -avh aphid_tissues.csv rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/raw_data`.
     * Put the *Aphis* and *Myzus* into different cvs files with `grep "Aphis," aphid_tissues.csv > aphis_accessions.csv`, and `grep "Myzus," aphid_tissues.csv > myzus_accessions.csv`.
