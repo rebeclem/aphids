@@ -14,4 +14,5 @@
     echo ${pref} >> namelist.txt 
     done
     ```
-7) 
+7) Before you run, make sure you have 'namelist.txt': a list of prefixes for each sample, `targets_all_OG.fa`: a fasta file with sequences formatted like AFAB-OG0003568, two paired sequence files and one BothSingle sequence file for each prefix. Once these are complete, run `sbatch ../../scripts/hybpiper.sh` from within both the aphis and myzus directories.
+8) Next, we will also run this on just the amino acid sequences.
