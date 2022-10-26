@@ -17,3 +17,8 @@
 7) Before you run, make sure you have 'namelist.txt': a list of prefixes for each sample, `targets_all_OG.fa`: a fasta file with sequences formatted like AFAB-OG0003568, two paired sequence files and one BothSingle sequence file for each prefix. Once these are complete, run `sbatch ../../scripts/hybpiper.sh` from within both the aphis and myzus directories.
 8) Next, we will also run this on just the amino acid sequences. Make a list of the prefixes with "aa" after each one for the stats part of the commmand. `for file in *BothSingle.fastq.gz; do pref=${file%%_*}; echo "${pref}_aa" >> namelist_aa.txt; done`
 9) Then, run `sbatch ../../scripts/hybpiper_aa.sh` in both the aphis and myzus directories.
+10) You may have to run hybpiper stats again for the aas?
+
+## HybPiper Output
+
+1) After you run hybpiper stats, you should have two summary statistics tsv files: `seq_lengths.tsv`, which lists the gene lengths recovered by HybPiper, and `hybpiper_stats.tsv`, which gives statistics about the run for all samples--see full explanation in the [tutorial](https://github.com/mossmatters/HybPiper/wiki/Tutorial).
