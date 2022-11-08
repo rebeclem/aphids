@@ -19,6 +19,9 @@
 9) Then, run `sbatch ../../scripts/hybpiper_aa.sh` in both the aphis and myzus directories.
 10) On an interactive node, run `hybpiper stats -t_dna targets_all_OG.fa gene namelist.txt` in both the aphis/hybpiper and myzus/hybpiper directories.
 11) Next, to get the stats from the aa run, use `hybpiper stats -t_aa targets_aa_OG.fa gene namelist_aa.txt --seq_lengths_filename seq_lengths_aa --stats_filename hybpiper_stats_aa` to assign a different name for the seq lengths and stats files.
+12) Make some recovery heatmaps using the commands: `hybpiper recovery_heatmap seq_lengths.tsv` and `hybpiper recovery_heatmap seq_lengths_aa.tsv --heatmap_filename recovery_heatmap_aa` 
+13) Copy the files to a directory called heatmaps. then copy to my computer using `rsync -avh rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/aphis/heatmaps/ .`
+14) Something weird with Aphis sample 7? Check on samples with a bunch of zeros.
 
 ## HybPiper Output
 
