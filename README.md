@@ -16,7 +16,7 @@ Here, we are looking at introgression and hybridization in two genera of aphids:
 2) Find the corresponding nucleotides to the amino acids to [set up for HybPiper](hybpiper_setup.md)
 3) [Clean and trim raw reads](cleantrim.md)
 3) Map genomes from this project to the nucleotide orthologs using [HybPiper](hybpiper.md)
-4) Build a tree using the orthologs
+4) [Build a tree](treebuilding.md) using the orthologs
 5) Time the tree
 6) Find synteny
 
