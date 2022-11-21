@@ -15,8 +15,8 @@ mkdir fasta_output
 hybpiper retrieve_sequences dna -t_dna targets_all_OG.fa --sample_names namelist.txt --fasta_dir fasta_output
 
 mkdir fasta_output_aa
-hybpiper retrieve_sequences aa -t_aa targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output
-hybpiper retrieve_sequences intron -t_aa targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output
-hybpiper retrieve_sequences supercontig -t_aa targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output
+hybpiper retrieve_sequences aa -t_aa targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output_aa
+hybpiper retrieve_sequences intron -t_aa targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output_aa
+hybpiper retrieve_sequences supercontig -t_aa targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output_aa
 
 conda deactivate
