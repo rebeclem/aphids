@@ -16,5 +16,7 @@ for f in *; do
 mafft ${f} > ${f}_align
 done
 ```
+3) Combine aligned fasta files into a concatenated file using [this script](https://github.com/mossmatters/HybPiper/blob/master/hybpiper/fasta_merge.py). First, make a text file of names of aligned files using `ls *align > fasta_aln.txt`
+4) 
 
 ## Building phylogeny using gene tree/species tree methods
