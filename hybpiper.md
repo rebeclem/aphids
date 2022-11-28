@@ -26,7 +26,7 @@
 ## HybPiper Output
 
 1) After you run hybpiper stats, you should have two summary statistics tsv files: `seq_lengths.tsv`, which lists the gene lengths recovered by HybPiper, and `hybpiper_stats.tsv`, which gives statistics about the run for all samples--see full explanation in the [tutorial](https://github.com/mossmatters/HybPiper/wiki/Tutorial). See [results](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1871184420).
-2) Make a directory called "fasta_output", then retrieve the sequences using command: `hybpiper retrieve_sequences dna -t_dna targets_all_OG.fa --sample_names namelist.txt --fasta_dir fasta_output`, and `hybpiper retrieve_sequences aa -t_aa targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output_aa`. Or run the file ['hybpiper_retrieve.sh'](scripts/hybpiper_retrieve.sh)
+2) Make a directory called "fasta_output", then retrieve the sequences using command: `hybpiper retrieve_sequences dna -t_dna targets_all_OG.fa --sample_names namelist.txt --fasta_dir fasta_output`, and `hybpiper retrieve_sequences dna -t_dna targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output_aa`. Or run the file ['hybpiper_retrieve.sh'](scripts/hybpiper_retrieve.sh)
 
 
 Next step: [Build a tree](treebuilding.md)
