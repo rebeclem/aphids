@@ -16,7 +16,7 @@ for f in *; do
 mafft ${f} > ${f}_align
 done
 ```
-3) Combine aligned fasta files into a concatenated file using phyx. On an interactive node, first, load the phyx module `module load phyx`, then in the fasta_output_aa directory, use the following command: .a text file of names of aligned files using `pxcat *_align > myzus_concat.fasta`
+3) Combine aligned fasta files into a concatenated file using phyx. On an interactive node, first, load the phyx module `module load phyx`, then in the fasta_output_aa directory, use the following command: .a text file of names of aligned files using `pxcat -s OG000503*.FNA_align -p partitions.txt -o myzus_trial.fasta`
 4) 
 
 ## Building phylogeny using gene tree/species tree methods
