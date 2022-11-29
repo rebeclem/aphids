@@ -4,7 +4,7 @@
 
 To build a tree with concatenation, we need a fasta file.
 
-1) We will align the fasta files using mafft. Do the following on an interactive load in the fasta_output directory: `module load mafft`.
+1) We will align the fasta files using mafft. Run the mafft script in the fasta_output_aa directory `sbatch ../../../scripts/mafft.sh` or do the following on an interactive node in the fasta_output directory: `module load mafft`.
 ```
 for f in *.FNA; do
 mafft ${f} > ${f}_align
