@@ -10,7 +10,7 @@ for fasta_file in glob.glob("*.fasta"):
 
     halfseqsplus1 = fasta.count('>')//2 + 1
 
-    command = "./Gblocks %s %s -b2=%s" % (fasta_file,gblocks_options,halfseqsplus1)
+    command = "Gblocks %s %s -b2=%s" % (fasta_file,gblocks_options,halfseqsplus1)
 
     print ("executing: " + command)
 
