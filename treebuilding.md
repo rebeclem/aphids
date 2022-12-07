@@ -2,14 +2,9 @@
 
 ## Building phylogeny using concatenation
 
-To build a tree with concatenation, we need a fasta file.
+To build a tree with concatenation, we need a fasta file. In the fasta_output_aa directory of hybpiper, we have 8631 (for *Aphis*) and 7064 (for *Myzus*) .FAA files and .FNA files. Each of these has sequences from each species of aphid, but we also need to align the original target files that we mapped to from the genomes online. 
 
-1) We will align the fasta files using mafft. Run the mafft script in the fasta_output_aa directory `sbatch ../../../scripts/mafft.sh` or do the following on an interactive node in the fasta_output directory: `module load mafft`.
-```
-for f in *.FNA; do
-mafft ${f} > ${f}_align
-done
-```
+1) Need to put the target files into the FAA files
 2) In the fasta_output_aa directory do the following:
 ```
 for f in *.FAA; do
