@@ -9,7 +9,7 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
 
-for f in OG*.FAA; do
-	geneID="${f%%.*}"
-	../../scripts/pal2nal.pl ${geneID}.FAA_align ${geneID}.FNA -output fasta -nomismatch > ${geneID}pal.fasta
+for f in OG*aafinal.fasta_align; do
+	geneID="${f%%_*}"
+	../../scripts/pal2nal.pl ${geneID}aafinal.fasta_align ${geneID}nucfinal.fasta -output fasta -nomismatch > ${geneID}_pal.fasta
 done
