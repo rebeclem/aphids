@@ -11,5 +11,5 @@
 
 for f in OG*.FAA; do
 	geneID="${f%%.*}"
-	../../../scripts/pal2nal.pl ${geneID}.FAA_align ${geneID}.FNA -output fasta -nomismatch > ${geneID}pal.fasta
+	../../scripts/pal2nal.pl ${geneID}.FAA_align ${geneID}.FNA -output fasta -nomismatch > ${geneID}pal.fasta
 done
