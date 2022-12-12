@@ -2,15 +2,16 @@
 
 1) We now have a file with the amino acid sequences that are single-species orthologs. Make a directory in the myzus and aphis directories and call it `hybpiper`. Transfer these files to that directory.
     * `Orthogroups/Orthogroups_SingleCopyOrthologues.txt` has a list of all the orthogroups that are single copy.
-    * All these sequences (there are 8631 for *Aphis*, 7064 for *Myzus*) are in the Single_Copy_Orthologue_Sequences folder, but each of these fasta files has 4 sequences in it (or 5 for myzus). I guess we can concatenate all of these into a single file.
+    * All these sequences (there are 8631 for *Aphis*, 7064 for *Myzus*) are in the Single_Copy_Orthologue_Sequences folder, but each of these fasta files has 4 sequences in it. I guess we can concatenate all of these into a single file.
     * First, let's add the name of the orthogroup to each of the sequences. Allocate an interactive node `salloc`, load the python module and virtual environment, then add the names of the OG to the descriptions of each sequence using the command `python ~/90day_aphid/scripts/name_change2.py` in the Single_copy_Orthologue_Sequences directory.
     * In the `hybpiper` directory, type the command: `cat ../aaLTPG/OrthoFinder/Results_Oct14/Single_Copy_Orthologue_Sequences/*final.fasta > single_copy_all_targets.fa`
     * You should have a file with 8631 orthogroups. Check the number of sequences in this file with `grep ">" single_copy_all_targets.fa | wc -l`. There should be 34,524 sequences for *Aphis* (4 different species with 8631 orthogroups) and 35,320 sequences for *Myzus* (5 species with 7064 orthologs).
 3) Now we need to get a file with the corresponding nucleotide sequences. Navigate to the hybpiper directory. 
     * Let's make a file of the list of names from the amino acid sequence: `grep ">" single_copy_all_targets.fa > genes_list.txt`
     * Now remove the karots from this file using `sed 's/>//' genes_list.txt > genes_list2.txt`. This command substitutes the carot for nothing.
-    * Remove the OG sequence from the file as well `sed 's/[^_]*_//' genes_list2.txt > genes_names.txt`
-    * Now use seqtk to extract matching sequences. `module load seqtk`, then for each species, make a different file
+    * The MPERs have different endings. Replace the MPERs that end in p1 to end in t1 `sed 's/_p/_t/' genes_list2.txt > genes_list3.txt`
+    * Remove the OG sequence from the file as well `sed 's/[^_]*_//' genes_list3.txt > genes_names.txt`
+4) Now use seqtk to extract matching sequences. `module load seqtk`, then for each species, make a different file
     * `seqtk subseq ../cdsLTPG/AFAB_final.fasta genes_names.txt > targets_AFAB_cds.fa`
     - `seqtk subseq ../cdsLTPG/AGLY_final.fasta genes_names.txt > targets_AGLY_cds.fa`
     -  `seqtk subseq ../cdsLTPG/AGOS_final.fasta genes_names.txt > targets_AGOS_cds.fa`
