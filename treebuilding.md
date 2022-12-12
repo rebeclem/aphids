@@ -14,7 +14,10 @@ To build a tree with concatenation, we need a fasta file. In the fasta_output_aa
 6) Now, in the Analysis directory, run the [gblocks.py](scripts/gblocks.py) using `python ../../scripts/gblocks.py`.
   * Make sure that you have 8631 files that end in \_mfgb using the command `ls *mfgb | wc -l` and make sure there are no empty files using `find * -empty`
 8) We have enough sequences that it makes sense to use only those without missing data for our first concatenated alignment. Make two directories in the fasta_output_aa directory--one called "complete" and one called "incomplete". Run `python ../../../scripts/missing_data.py` in the fasta_output_aa directory to move the sequences with 17 sequences (for myzus) and 23 ( for Aphis) to the complete folder and those with fewer to the incomplete folder. For myzus DNA, there should be 4051 fasta files in the complete directory and 3013 in the incomplete. For Aphis expect 4607 complete and 4024 incomplete. 
-9) Combine aligned fasta files into a concatenated file using phyx. On an interactive node, first, load the phyx module `module load phyx`, then in the "complete directory", use the following command: `pxcat -s OG*mfgb -p partitions.txt -o aphis_concat.fasta`
-10) 
+9) Combine aligned fasta files into a concatenated file using phyx. First we need to make sure all sequence names are the same in each file. This means changing the "APHD00002ASPI-OG0012537" to just "APHD00002ASPI". Run: `for f in *pal.fasta_mfgb; do prefix="${f%%_*}"; echo "$prefix"; sed 's/-OG.*//' $f > "${prefix}_final.fasta"; done`.On an interactive node, first, load the phyx module `module load phyx`, then in the "complete directory", use the following command: `pxcat -s OG*final.fasta -p partitions.txt -o aphis_concat.fasta`
+
+We now have our concatenated fasta file and a partition file!
+### Running IQtree
+1) To find the best model using modelfinder run `sbatch ../../../scripts/iqtree_modelfinder.sh` to run [iqtree modelfinder](scripts/iqtree_modelfinder.sh) in the "complete" directory.
 
 ## Building phylogeny using gene tree/species tree methods
