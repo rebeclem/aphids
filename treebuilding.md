@@ -16,7 +16,7 @@ To build a tree with concatenation, we need a fasta file. In the fasta_output_aa
 8) We have enough sequences that it makes sense to use only those without missing data for our first concatenated alignment. Make two directories in the fasta_output_aa directory--one called "complete" and one called "incomplete". Run `python ../../../scripts/missing_data_aphis.py` in the fasta_output_aa directory to move the sequences with 17 sequences (for myzus) and 23 ( for Aphis) to the complete folder and those with fewer to the incomplete folder. For myzus DNA, there should be **4625** fasta files in the complete directory and 2437 in the incomplete. For Aphis expect **4607** complete and 4024 incomplete.
 9) To clean things up, make a directory called "intermediate" and move all the files that begin with "OG" there. 
 10) Combine aligned fasta files into a concatenated file using phyx. First we need to make sure all sequence names are the same in each file. This means changing the "APHD00002ASPI-OG0012537" to just "APHD00002ASPI". We also need to remove the spaces from the sequences before concatenating them. Run: `for f in *pal.fasta_mfgb; do prefix="${f%%_*}"; echo "$prefix"; sed 's/-OG.*//g; s/ //g' $f > "${prefix}_final.fasta"; done`.
-11) On an interactive node, first, load the phyx module `module load phyx`, then in the "complete directory", use the following command: `pxcat -s OG*final.fasta -p partitions.txt -o aphis_concat.fasta`
+11) In the "complete directory", use the following command: `sbatch ../../../scripts/pxcat.sh` to run the [pxcat](scripts/pxcat.sh) script to concatenate all sequences into one fasta file.
 
 We now have our concatenated fasta file and a partition file!
 ### Running IQtree
