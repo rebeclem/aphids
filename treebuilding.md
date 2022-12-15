@@ -23,4 +23,8 @@ We now have our concatenated fasta file and a partition file!
 1) To find the best model using modelfinder run `sbatch ../../../scripts/iqtree_modelfinder.sh` to run [iqtree modelfinder](scripts/iqtree_modelfinder.sh) in the "complete" directory (takes 5 hours).
 2) Run IQtree with this best model with the [iqtree_tree.sh] script
 
+### Viewing the trees
+* In the Analysis directory, make a directory called "iqtree_aphis" or "iqtree_myzus", and copy all iqtree output files using `mv iqtree* ../iqtree_aphis`. 
+* Make a folder called iqtree_output on your personal computer. Copy the resulting iqtree files to your computer by using the commands: rsync -avh rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/aphis/Analysis/iqtree_aphis .
+
 ## Building phylogeny using gene tree/species tree methods
