@@ -26,5 +26,7 @@ We now have our concatenated fasta file and a partition file!
 ### Viewing the trees
 * In the Analysis directory, make a directory called "iqtree_aphis" or "iqtree_myzus", and copy all iqtree output files using `mv iqtree* ../iqtree_aphis`. 
 * Make a folder called iqtree_output on your personal computer. Copy the resulting iqtree files to your computer by using the commands: rsync -avh rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/aphis/Analysis/iqtree_aphis .
+* Open the concensus file in [figtree](http://tree.bio.ed.ac.uk/software/figtree/).
+* Compare to Mather 2022 and Rebijith et al. 2017 tree.
 
 ## Building phylogeny using gene tree/species tree methods
