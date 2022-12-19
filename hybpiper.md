@@ -28,5 +28,12 @@
 1) After you run hybpiper stats, you should have two summary statistics tsv files: `seq_lengths.tsv`, which lists the gene lengths recovered by HybPiper, and `hybpiper_stats.tsv`, which gives statistics about the run for all samples--see full explanation in the [tutorial](https://github.com/mossmatters/HybPiper/wiki/Tutorial). See [results](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1871184420).
 2) Make a directory called "fasta_output", then retrieve the sequences using command: `hybpiper retrieve_sequences dna -t_dna targets_all_OG.fa --sample_names namelist.txt --fasta_dir fasta_output`, and `hybpiper retrieve_sequences dna -t_dna targets_aa_OG.fa --sample_names namelist_aa.txt --fasta_dir fasta_output_aa`. Or run the file ['hybpiper_retrieve.sh'](scripts/hybpiper_retrieve.sh)
 
+## HybPiper to pull out symbionts and COI barcoding sequences
+* We want to make sure that we have the correct sequence ID's. One way of doing this is mapping to aphid COIs. There is a file at `/90daydata/aphid_phylogenomics/chris/hybpiper_seqs_to_orthos/aphid_scp_orthos_mtdna_rbcl_endos.fasta` that has a list of endosymbionts and mitochondrial DNA for aphids. In the "hybpiper" directory, run [hybpiper_COI.sh] to pull out the mitochondrial and endosymbiont sequences. We will leave off the intronerate option for this one.
+
+## Using Hybpiper to pull out sequences from other available genomes
+* Copy the genomes to the hybpiper folder
+* Rename them
+* Run hybpiper_other.sh 
 
 Next step: [Build a tree](treebuilding.md)
