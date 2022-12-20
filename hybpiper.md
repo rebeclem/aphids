@@ -30,6 +30,9 @@
 
 ## HybPiper to pull out symbionts and COI barcoding sequences
 * We want to make sure that we have the correct sequence ID's. One way of doing this is mapping to aphid COIs. There is a file at `/90daydata/aphid_phylogenomics/chris/hybpiper_seqs_to_orthos/aphid_scp_orthos_mtdna_rbcl_endos.fasta` that has a list of endosymbionts and mitochondrial DNA for aphids. In the "hybpiper" directory, run [hybpiper_COI.sh] to pull out the mitochondrial and endosymbiont sequences. We will leave off the intronerate option for this one.
+* When it finishes, make a file called namelist_COI.txt that has the names of the directories: `ls -d *COI > namelist_COI.txt`.
+* Retrieve the samples. Run ['hybpiper_retrieve_COI.sh'](scripts/hybpiper_retrieve_COI.sh).
+* [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) the samples to verify species ID.
 
 ## Using Hybpiper to pull out sequences from other available genomes
 * Copy the genomes to the raw_data/other_genomes folder
