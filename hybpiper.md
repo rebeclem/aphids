@@ -32,8 +32,10 @@
 * We want to make sure that we have the correct sequence ID's. One way of doing this is mapping to aphid COIs. There is a file at `/90daydata/aphid_phylogenomics/chris/hybpiper_seqs_to_orthos/aphid_scp_orthos_mtdna_rbcl_endos.fasta` that has a list of endosymbionts and mitochondrial DNA for aphids. In the "hybpiper" directory, run [hybpiper_COI.sh] to pull out the mitochondrial and endosymbiont sequences. We will leave off the intronerate option for this one.
 
 ## Using Hybpiper to pull out sequences from other available genomes
-* Copy the genomes to the hybpiper folder
-* Rename them
-* Run hybpiper_other.sh 
+* Copy the genomes to the raw_data/other_genomes folder
+* Rename the sequences to have a 4 digit species code and to include "other" in the name like "AGOS_ASM2018417v2_other.fasta.gz"
+* Move the genomes to either the aphis/hybpiper or myzus/hybpiper directories. `mv A*other* ../../aphis/hybpiper/` and `mv M*other* ../../myzus/hybpiper/`.
+* Put their names in a file called 'genomelist.txt'. `for file in *other*; do pref=${file%_*}; echo ${pref} >>genomelist.txt; done`
+* Run hybpiper_other.sh in the aphis and myzus hybpiper directories
 
 Next step: [Build a tree](treebuilding.md)
