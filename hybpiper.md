@@ -32,10 +32,12 @@
 * We want to make sure that we have the correct sequence ID's. One way of doing this is mapping to aphid COIs. There is a file at `/90daydata/aphid_phylogenomics/chris/hybpiper_seqs_to_orthos/aphid_scp_orthos_mtdna_rbcl_endos.fasta` that has a list of endosymbionts and mitochondrial DNA for aphids. In the "hybpiper" directory, run [hybpiper_COI.sh] to pull out the mitochondrial and endosymbiont sequences. We will leave off the intronerate option for this one.
 * When it finishes, make a file called namelist_COI.txt that has the names of the directories: `ls -d *COI > namelist_COI.txt`.
 * Retrieve the samples. Run ['hybpiper_retrieve_COI.sh'](scripts/hybpiper_retrieve_COI.sh).
-* [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) the samples to verify species ID.
+* [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) the samples to verify species ID and use the Canadian site Biodiversity of life database [BOLD](https://www.boldsystems.org/index.php/IDS_OpenIdEngine).
+* Record best matches in the [hybpiper output](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1606515432) database.
 
 ## Using Hybpiper to pull out sequences from other available genomes
-* Copy the genomes to the raw_data/other_genomes folder
+* First, find sequences with SRA data on GenBank. I have a list [here](https://docs.google.com/spreadsheets/d/1YTeKEWSZg9Z5VIzDOeepkhvPFj-RW5Ua3oGiUnMjQRo/edit#gid=0).
+* Put them into a file called [sra_fetch_dump_array_list.txt](scripts/sra_fetch_dump_array_list.txt) with the SRR code and their name.
 * Rename the sequences to have a 4 digit species code and to include "other" in the name like "AGOS_ASM2018417v2_other.fasta.gz"
 * Move the genomes to either the aphis/hybpiper or myzus/hybpiper directories. `mv A*other* ../../aphis/hybpiper/` and `mv M*other* ../../myzus/hybpiper/`.
 * Put their names in a file called 'genomelist.txt'. `for file in *other*; do pref=${file%_*}; echo ${pref} >>genomelist.txt; done`
