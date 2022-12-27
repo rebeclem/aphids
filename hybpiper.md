@@ -32,15 +32,22 @@
 * We want to make sure that we have the correct sequence ID's. One way of doing this is mapping to aphid COIs. There is a file at `/90daydata/aphid_phylogenomics/chris/hybpiper_seqs_to_orthos/aphid_scp_orthos_mtdna_rbcl_endos.fasta` that has a list of endosymbionts and mitochondrial DNA for aphids. In the "hybpiper" directory, run [hybpiper_COI.sh] to pull out the mitochondrial and endosymbiont sequences. We will leave off the intronerate option for this one.
 * When it finishes, make a file called namelist_COI.txt that has the names of the directories: `ls -d *COI > namelist_COI.txt`.
 * Retrieve the samples. Run ['hybpiper_retrieve_COI.sh'](scripts/hybpiper_retrieve_COI.sh).
-* [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) the samples to verify species ID and use the Canadian site Biodiversity of life database [BOLD](https://www.boldsystems.org/index.php/IDS_OpenIdEngine).
+* [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) the samples in "COX1.FNA" in the fasta_output_COI directory to verify species ID and use the Canadian site Biodiversity of life database [BOLD](https://www.boldsystems.org/index.php/IDS_OpenIdEngine).
 * Record best matches in the [hybpiper output](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1606515432) database.
+* Make an alignment of COI sequences by uploading COX1.FNA or copy pasting file to [mafft](https://mafft.cbrc.jp/alignment/server/)
+* Download the alignment and upload it to [iqtree](http://iqtree.cibiv.univie.ac.at/)
+* Look at treefile using Figtree.
 
 ## Using Hybpiper to pull out sequences from other available genomes
 * First, find sequences with SRA data on GenBank. I have a list [here](https://docs.google.com/spreadsheets/d/1YTeKEWSZg9Z5VIzDOeepkhvPFj-RW5Ua3oGiUnMjQRo/edit#gid=0).
-* Put them into a file called [sra_fetch_dump_array_list.txt](scripts/sra_fetch_dump_array_list.txt) with the SRR code and their name.
-* Rename the sequences to have a 4 digit species code and to include "other" in the name like "AGOS_ASM2018417v2_other.fasta.gz"
-* Move the genomes to either the aphis/hybpiper or myzus/hybpiper directories. `mv A*other* ../../aphis/hybpiper/` and `mv M*other* ../../myzus/hybpiper/`.
-* Put their names in a file called 'genomelist.txt'. `for file in *other*; do pref=${file%_*}; echo ${pref} >>genomelist.txt; done`
-* Run hybpiper_other.sh in the aphis and myzus hybpiper directories
+* Put their names into a file called [sra_fetch_dump_array_list.txt](scripts/sra_fetch_dump_array_list.txt) with the SRR code and their name.
+* Fetch the sequences from GenBank using SRA tools using [sra_fetch_array.sh](scripts/sra_fetch_array.sh). After this step you should have a bunch of files that end in ".sra".
+* Use [sra_fastqdump.sh](scripts/sra_fastqdump.sh) to convert these .sra files to .fastq files.
+* Rename the sequences to have a 4 digit species code and to include "other" in the name like "other_AGOS_ASM2018417v2.fasta.gz" using the python script [name_change4.py](scripts/name_change4.py).
+* Move the genomes to either the aphis/hybpiper or myzus/hybpiper directories. `mv other_A* ../../aphis/hybpiper/` and `mv other_M* ../../myzus/hybpiper/`.
+* In the hybpiper directory, put their names in a file called 'genomelist.txt'. `for file in other*1.fastq; do pref=${file%_*}; echo ${pref} >>genomelist.txt; done`
+* Run [hybpiper_other.sh](scripts/hybpiper_other.sh) in the aphis and myzus hybpiper directories
+* Run hybpiper_other_COI.sh to pull out COI sequences for these.
+* Retrieve the sequences once they're finished.
 
 Next step: [Build a tree](treebuilding.md)
