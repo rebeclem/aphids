@@ -17,6 +17,7 @@ To build a tree with concatenation, we need a fasta file. In the fasta_output_aa
 9) To clean things up, make a directory called "intermediate" and move all the files that begin with "OG" there. 
 10) Combine aligned fasta files into a concatenated file using phyx. First we need to make sure all sequence names are the same in each file. This means changing the "APHD00002ASPI-OG0012537" to just "APHD00002ASPI". We also need to remove the spaces from the sequences before concatenating them. Run: `for f in *pal.fasta_mfgb; do prefix="${f%%_*}"; echo "$prefix"; sed 's/-OG.*//g; s/ //g' $f > "${prefix}_final.fasta"; done`.
 11) In the "complete directory", use the following command: `sbatch ../../../scripts/pxcat.sh` to run the [pxcat](scripts/pxcat.sh) script to concatenate all sequences into one fasta file (takes about 5min to run).
+12) You should probably [change the names](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1103610729) of the ones we changed here before you run the tree.
 
 We now have our concatenated fasta file and a partition file!
 ### Running IQtree
