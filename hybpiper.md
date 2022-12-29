@@ -37,6 +37,7 @@
 * Make an alignment of COI sequences by uploading COX1.FNA or copy pasting file to [mafft](https://mafft.cbrc.jp/alignment/server/)
 * Download the alignment and upload it to [iqtree](http://iqtree.cibiv.univie.ac.at/)
 * Look at treefile using Figtree.
+* If the species names are incorrect, [fix the names](fixnames.md) and rerun.
 
 ## Using Hybpiper to pull out sequences from other available genomes
 * First, find sequences with SRA data on GenBank. I have a list [here](https://docs.google.com/spreadsheets/d/1YTeKEWSZg9Z5VIzDOeepkhvPFj-RW5Ua3oGiUnMjQRo/edit#gid=0).
