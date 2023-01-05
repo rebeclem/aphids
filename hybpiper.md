@@ -38,6 +38,7 @@
 * Download the alignment and upload it to [iqtree](http://iqtree.cibiv.univie.ac.at/)
 * Look at treefile using Figtree.
 * If the species names are incorrect, [fix the names](fixnames.md) and rerun.
+* If you want to check for parasitoids or other eukaryotes, pull the paralogs of COX1 to a file `for f in *COI; do cat ${f}/COX1/${f}/paralogs/COX1_paralogs.fasta >> COX1paralogs.fasta; done` then blast COX1paralogs.fasta.
 
 ## Using Hybpiper to pull out sequences from other available genomes
 * First, find sequences with SRA data on GenBank. I have a list [here](https://docs.google.com/spreadsheets/d/1YTeKEWSZg9Z5VIzDOeepkhvPFj-RW5Ua3oGiUnMjQRo/edit#gid=0).
