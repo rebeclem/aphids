@@ -79,6 +79,14 @@ For *Myzus*, we find: `((Myzus_cerasi:0.0494855,Myzus_lythri:0.0502962)0.706958:
   
 </details>
 
+<details>
+<summary> Kim et al. 2011 tree (1 nuclear, 3 mitochondrial) </summary>
+<br>
+
+  ![phylogeny4](figs/phylogeny_Kim_2011.png)
+  
+</details>
+
 The Rebijith et al. tree doesn't have enough of the taxa, but the Mathers tree has the same relationships we found with our tree.
 
 Next: [Setup to run HybPiper](hybpiper_setup.md)
