@@ -31,3 +31,9 @@ We now have our concatenated fasta file and a partition file!
 * Compare to Mather 2022 and Rebijith et al. 2017 tree.
 
 ## Building phylogeny using gene tree/species tree methods
+
+Although concatenation methods can give reliably tree inferences, especially with a large amount of genes, it is also a good idea to infer a species tree using individual gene trees. To do this, we will use [ASTRAL-III](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-018-2129-y). 
+* To run astral, we need to download the javascript from the [Astral III github page](https://github.com/smirarab/ASTRAL/raw/master/Astral.5.7.8.zip). Then, copy this to the cluster using the following: `rsync -avh Astral rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/scripts`.
+* The input of astral should be gene trees in the Newick format. We can use [PASTA](https://github.com/smirarab/pasta/blob/master/pasta-doc/pasta-tutorial.md) to estimate sequence alignments and gene trees at the same time (uses MAFFT and SATe). Allocate an interactive node `salloc`, load the java module `module load java`, then activate the virtual environment `source ~/90day_aphid/conda_env/virt_test/bin/activate`. Run `python setup.py develop` to set it up.
+* In the complete directory run [pasta.sh](scripts/pasta.sh) to make alignments and trees of all the genes.
+*  
