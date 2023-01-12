@@ -39,4 +39,6 @@ Although concatenation methods can give reliably tree inferences, especially wit
 * First, let's make partition files for each of the alignments of fasta files that we made in the last step using the file [get_iqtree_partitions_for_prot_coding_genes.py](scripts/get_iqtree_partitions_for_prot_coding_genes.py)
 * Next, run IQtree on each of the nucleotide alignements using the generated partition files. [This script](scripts/iqtree_array.sh) runs 500 at a time. Make a list of gene names using `for f in *final.fasta; do pref="${f%%_*}"; echo "$pref" >> genelist.txt; done`. Change the iqtree_array script array number to the number of genes you will be doing then run it using `sbatch ../../../scripts/iqtree_array.sh`
 * Finally, we will combine the trees into one file so we can run them through ASTRAL. `cat *contree > myzus.gene.tre`
-* Run [astral.sh](scripts/astral.sh) with the command `java -jar ../../../scripts/Astral/astral.5.5.1.jar -i myzus.gene.tre -o myzus.sp.tre 2> myzus_astral.log`
+* Run [astral.sh](scripts/astral.sh) with the command `java -jar ../../../scripts/Astral/astral.5.5.1.jar -i myzus.gene.tre -o myzus.astral.tre 2> myzus_astral.log`. This should just take a few minutes.
+* Change the names in the tree as in step 14. 
+* Download the log file and astral tree 
