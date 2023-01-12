@@ -16,13 +16,14 @@ To build a tree with concatenation, we need a fasta file. In the fasta_output_aa
   * Make sure that you have **8631** files that end in \_mfgb using the command `ls *mfgb | wc -l` and make sure there are no empty files using `find * -empty`
 10) We have enough sequences that it makes sense to use only those without missing data for our first concatenated alignment. Make two directories in the Analysis directory--one called "complete" and one called "incomplete". Run `python ../../scripts/missing_data_aphis.py` in the Analysis directory to move the sequences with 19 sequences (for myzus) and 23 ( for Aphis) to the complete folder and those with fewer to the incomplete folder. Change the missing data python script based on max # of reads found with `grep -c "^>" *mfgb`. For myzus DNA, there should be **6154** fasta files in the complete directory and 910 in the incomplete. For Aphis expect **4607** complete and 4024 incomplete.
 12) Combine aligned fasta files into a concatenated file using phyx. First we need to make sure all sequence names are the same in each file. This means changing the "APHD00002ASPI-OG0012537" to just "APHD00002ASPI". We also need to remove the spaces from the sequences before concatenating them. Run: `for f in *pal.fasta_mfgb; do prefix="${f%%_*}"; echo "$prefix"; sed 's/-OG.*//g; s/ //g' $f > "${prefix}_final.fasta"; done`.
-13) In the "complete directory", use the following command: `sbatch ../../../scripts/pxcat.sh` to run the [pxcat](scripts/pxcat.sh) script to concatenate all sequences into one fasta file (takes about 5min to run).
-14) You should probably [change the names](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1103610729) of the ones we changed here before you run the tree.
+13) In the "complete directory", use the following command: `sbatch ../../../scripts/pxcat.sh` to run the [pxcat](scripts/pxcat.sh) script to concatenate all sequences into one fasta file (takes about 5min to run) and generate a partition file called partitions.txt.
+14) You should probably [change the names](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1103610729) of the ones we changed here before you run the tree. For example:
+   * sed -i 's/APHD00036DSP/APHD00036BBRA/; s/APHD00071MCER/APHD00071MSPgt/; s/>MCER/>other_MCER_JHI1/; s/>MLIG/>other_MLIG_v1/; s/>MLYT/>other_MLYT_v1/; s/>MPER/>other_MPER_O/; s/>MVAR/>other_MVAR_v1/' myzus_concat.fasta
 
 We now have our concatenated fasta file and a partition file!
 ### Running IQtree
 1) To find the best model using modelfinder run `sbatch ../../../scripts/iqtree_modelfinder.sh` to run [iqtree modelfinder](scripts/iqtree_modelfinder.sh) in the "complete" directory (takes 5 hours).
-2) Run IQtree with this best model with the [iqtree_tree.sh] script
+2) Run IQtree with this best model with the [iqtree_tree.sh](scripts/iqtree_tree.sh) script.
 
 ### Viewing the trees
 * In the Analysis directory, make a directory called "iqtree_aphis" or "iqtree_myzus", and copy all iqtree output files using `mv iqtree* ../iqtree_aphis`. 
@@ -36,5 +37,6 @@ Although concatenation methods can give reliably tree inferences, especially wit
 * To run astral, we need to download the javascript from the [Astral III github page](https://github.com/smirarab/ASTRAL/raw/master/Astral.5.7.8.zip). Then, copy this to the cluster using the following: `rsync -avh Astral rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/scripts`.
 * The input of astral should be gene trees in the Newick format. 
 * First, let's make partition files for each of the alignments of fasta files that we made in the last step using the file [get_iqtree_partitions_for_prot_coding_genes.py](scripts/get_iqtree_partitions_for_prot_coding_genes.py)
-* Next, run IQtree on each of the nucleotide alignements using the generated partition files. [This script](scripts/iqtree_array.sh) runs 500 at a time. Make a list of gene names using `for f in *nucfinal.fasta; do pref="${f%%_*}"; echo "$pref" >> genelist.txt; done`. Change the iqtree_array script array number to the number of genes you will be doing then run it using `sbatch ../../../scripts/iqtree_array.sh`
-* Finally, we will combine the trees into one file so we can run them through ASTRAL.
+* Next, run IQtree on each of the nucleotide alignements using the generated partition files. [This script](scripts/iqtree_array.sh) runs 500 at a time. Make a list of gene names using `for f in *final.fasta; do pref="${f%%_*}"; echo "$pref" >> genelist.txt; done`. Change the iqtree_array script array number to the number of genes you will be doing then run it using `sbatch ../../../scripts/iqtree_array.sh`
+* Finally, we will combine the trees into one file so we can run them through ASTRAL. `cat *contree > myzus.gene.tre`
+* Run [astral.sh](scripts/astral.sh) with the command `java -jar ../../../scripts/Astral/astral.5.5.1.jar -i myzus.gene.tre -o myzus.sp.tre 2> myzus_astral.log`
