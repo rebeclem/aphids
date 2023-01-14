@@ -19,6 +19,7 @@ To build a tree with concatenation, we need a fasta file. In the fasta_output_aa
 13) In the "complete directory", use the following command: `sbatch ../../../scripts/pxcat.sh` to run the [pxcat](scripts/pxcat.sh) script to concatenate all sequences into one fasta file (takes about 5min to run) and generate a partition file called partitions.txt.
 14) You should probably [change the names](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1103610729) of the ones we changed here before you run the tree. For example:
    * sed -i 's/APHD00036DSP/APHD00036BBRA/; s/APHD00071MCER/APHD00071MSPgt/; s/>MCER/>other_MCER_JHI1/; s/>MLIG/>other_MLIG_v1/; s/>MLYT/>other_MLYT_v1/; s/>MPER/>other_MPER_O/; s/>MVAR/>other_MVAR_v1/' myzus_concat.fasta
+   * sed -i 's/>APHD00079AGOS/>APHD00079ANAS/; s/>APHD00101ANER/>APHD00101ASPsv/; s/>APHD00122ASPI/>APHD00122ASPva/; s/>APHD00232ASP/>APHD00232AVIB/; s/>APHD00265ANA/>APHD00265ACOR/; s/>AFAB/>other_AFAB_JIC1/; s/>AGLY/>other_AGLY_4v2/; s/>AGOS/>other_AGOS_1033E/; s/>ATHA/>other_ATHA_LTPG/' aphis_concat.fasta
 
 We now have our concatenated fasta file and a partition file!
 ### Running IQtree
