@@ -47,8 +47,9 @@ table(dist[dist$treedist>10,"longestBranch"])
 dist_sub<-dist[dist$treedist>2.5,]
 length(dist_sub$Gene)/nrow(dist)
 # It seems like about 10% of the trees have branch lengths longer than 2.5
-new_OG<-dist[dist$treedist<2.5,"Gene"]
-write.table(new_OG,"Aphis_90pct.txt",quote=F,row.names=F,col.names=F)
+new_OG<-dist[dist$treedist>2.5 & dist$longestBranch=="APHD00272AAUR","Gene"]
+length(new_OG)
+write.table(new_OG,"Aphis_bigdist.txt",quote=F,row.names=F,col.names=F)
 
 # Myzus now
 
