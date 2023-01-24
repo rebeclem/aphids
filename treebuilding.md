@@ -18,7 +18,7 @@ To build a tree with concatenation, we need a fasta file. In the fasta_output_aa
 13) In the "Analysis" directory, use the following command: `sbatch ../../scripts/pxcat.sh` to run the [pxcat](scripts/pxcat.sh) script to concatenate all sequences into one fasta file (takes about 5min to run) and generate a partition file called partitions.txt.
 14) You should probably [change the names](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1103610729) of the ones we changed here before you run the tree. For example:
    * sed -i 's/APHD00036DSP/APHD00036BBRA/; s/APHD00071MCER/APHD00071MSPgt/; s/>MCER/>other_MCER_JHI1/; s/>MLIG/>other_MLIG_v1/; s/>MLYT/>other_MLYT_v1/; s/>MPER/>other_MPER_O/; s/>MVAR/>other_MVAR_v1/' myzus_concat.fasta
-   * sed -i 's/>APHD00079AGOS/>APHD00079ANAS/; s/>APHD00101ANER/>APHD00101ASPsv/; s/>APHD00122ASPI/>APHD00122ASPva/; s/>APHD00232ASP/>APHD00232AVIB/; s/>APHD00265ANA/>APHD00265ACOR/; s/>AFAB/>other_AFAB_JIC1/; s/>AGLY/>other_AGLY_4v2/; s/>AGOS/>other_AGOS_1033E/; s/>ATHA/>other_ATHA_LTPG/' aphis_concat.fasta
+   * sed -i 's/>APHD00079AGOS/>APHD00079ANAS/; s/>APHD00101ANER/>APHD00101ASPsv/; s/>APHD00122ASPI/>APHD00122ASPva/; s/>APHD00232ASP/>APHD00232AVIB/; s/>APHD00265ANA/>APHD00265ACORN/; s/>AFAB/>other_AFAB_JIC1/; s/>AGLY/>other_AGLY_4v2/; s/>AGOS/>other_AGOS_1033E/; s/>ATHA/>other_ATHA_LTPG/' aphis_concat.fasta
 
 11) We have enough sequences that it makes sense to use only those without missing data for our first concatenated alignment. Make two directories in the Analysis directory--one called "complete" and one called "incomplete". Run `python ../../scripts/missing_data_aphis.py` in the Analysis directory to move the sequences with 19 sequences (for myzus) and 23 ( for Aphis) to the complete folder and those with fewer to the incomplete folder. Change the missing data python script based on max # of reads found with `grep -c "^>" *mfgb`. For myzus DNA, there should be **6154** fasta files in the complete directory and 910 in the incomplete. For Aphis expect **4607** complete and 4024 incomplete.
 
@@ -43,7 +43,7 @@ Although concatenation methods can give reliably tree inferences, especially wit
 * Finally, we will combine the trees into one file so we can run them through ASTRAL. `cat OG*treefile > aphis_gene.tre`. (Or myzus_gene.tre)
 * Run [astral.sh](scripts/astral.sh) with the command `java -jar ../../../scripts/Astral/astral.5.5.1.jar -i myzus.gene.tre -o myzus.astral.tre 2> myzus_astral.log`. This should just take a few minutes.
 * Change the names in the tree as in step 14. 
-  * sed -i 's/APHD00079AGOS/APHD00079ANAS/; s/APHD00101ANER/APHD00101ASPsv/; s/APHD00122ASPI/APHD00122ASPva/; s/APHD00232ASP/APHD00232AVIB/; s/APHD00265ANA/APHD00265ACOR/; s/(AFAB/(other_AFAB_JIC1/; s/,AGLY/,other_AGLY_4v2/; s/(AGOS/(other_AGOS_1033E/; s/(ATHA/(other_ATHA_LTPG/' aphis_astral.tre
+  * sed -i 's/APHD00079AGOS/APHD00079ANAS/; s/APHD00101ANER/APHD00101ASPsv/; s/APHD00122ASPI/APHD00122ASPva/; s/APHD00232ASP/APHD00232AVIB/; s/APHD00265ANA/APHD00265ACORN/; s/(AFAB/(other_AFAB_JIC1/; s/,AGLY/,other_AGLY_4v2/; s/(AGOS/(other_AGOS_1033E/; s/(ATHA/(other_ATHA_LTPG/' aphis_astral.tre
 * Download the log file and astral tree 
 
 ## Dealing with long branches
