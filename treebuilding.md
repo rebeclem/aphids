@@ -53,3 +53,6 @@ For *Aphis*, APHD00272AAUR has a very long branch. This is probably because we a
 * Remove APHD00272AAUR from the nucleotide alignments where it is the outgroup and the branch length is longer than 2.5 with [this script](AAUR_cut.py). `while read p; do seqkit grep -rvip "APHD00272AAUR" ${p}_final.fasta > ${p}New_final.fasta; done < Aphis_bigdist.txt`. Then move the old files to a different place a new directory, oldfastas: `while read p; do mv ${p}_final.fasta oldfastas; done <Aphis_bigdist.txt`.
 * Also remove the old trees: `while read p; do rm ${p}_nucs_ml*; done <Aphis_bigdist.txt`
 * Make a concatenated tree and an astral tree of these genes without the things.
+* This didn't really help so now I'm just going to remove AAUR00272AAUR from all the trees.
+* Move the old trees and stuff to a directory calld oldfiles2
+* `while read p; do seqkit grep -rvip "APHD00272AAUR" ${p}_final.fasta > ${p}New_final.fasta; done < Aphis_bigdist.txt`
