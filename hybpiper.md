@@ -52,4 +52,7 @@
 * Run hybpiper_other_COI.sh to pull out COI sequences for these.
 * Retrieve the sequences once they're finished.
 
+## Compress and back up files
+* Use [compress.sh](scripts/compress.sh) to compress the files and then back them up to long term storage using globus.
+
 Next step: [Build a tree](treebuilding.md)
