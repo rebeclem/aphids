@@ -7,6 +7,7 @@ We now have both a species tree and a concatenated tree for these aphid groups. 
 activate "/home/<YourNetID>/.julia/project1"
 add PhyloNetworks
 add CSV
+add DataFrames
 ```
 * I ran into this issue when my package didn't load but [this fixes it? ](https://discourse.julialang.org/t/help-with-registry-toml-missing/49304)
 * To make sure it's working, type `using PhyloNetworks;`
@@ -15,3 +16,10 @@ add CSV
 * Write it to a CSV: `using CSV; CSV.write("myzus_tableCF.csv", df);` and then read it in as a DataCF object: `iqtreeCF = readTableCF("myzus_tableCF.csv")`
 * Read in your astral consensus tree: `astraltree = readMultiTopology("myzus_astral.tre")[1]`
 * To leave the environment use the package manager then "activate". 
+* To access the environment again, start julia, then type:
+```
+using Pkg
+Pkg.activate("/home/rebecca.clement/.julia/project1")
+Pkg.instantiate()
+```
+* Update the [runSNaQ.jl](scripts/runSNaQ.jl) to have the correct csv and tree file names, as well as the correct pathway to your julia project. Then run `sbatch ../../scripts/snaq.sh`.
