@@ -22,4 +22,5 @@ using Pkg
 Pkg.activate("/home/rebecca.clement/.julia/project1")
 Pkg.instantiate()
 ```
+* Use Pkg.status() to see what packages you have loaded.
 * Update the [runSNaQ.jl](scripts/runSNaQ.jl) to have the correct csv and tree file names, as well as the correct pathway to your julia project. Then run `sbatch ../../scripts/snaq.sh`.
