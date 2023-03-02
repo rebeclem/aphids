@@ -19,6 +19,7 @@ Here, we are looking at introgression and hybridization in two genera of aphids:
 3) Map genomes from this project to the nucleotide orthologs using [HybPiper](hybpiper.md)
 4) [Build a tree](treebuilding.md) using the orthologs
 5) Use [snaQ](snaq.md) to search for hybridization events using networks.
+6) Use [bpp](bpp.md)
 5) Time the tree
 6) Find synteny
 
