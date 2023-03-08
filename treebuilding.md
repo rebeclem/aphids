@@ -56,3 +56,5 @@ For *Aphis*, APHD00272AAUR has a very long branch. This is probably because we a
 * This didn't really help so now I'm just going to remove AAUR00272AAUR from all the trees.
 * Move the old trees and stuff to a directory calld oldfiles2
 * `while read p; do seqkit grep -rvip "APHD00272AAUR" ${p}_final.fasta > ${p}New_final.fasta; done < Aphis_bigdist.txt`
+
+Next: do [snaq](snaq.md)
