@@ -30,7 +30,7 @@ define B as ASPnl,ASPnl2
 define C as ASPnl,ASPlk
 hybridization C B, S T as Q H tau=yes, yes phi=.0348
 ```
-    * To run, first you need to copy the program from github. Then use `export PATH=$PATH:~/mybpp`
+6) To run, first you need to copy the program from github. Then use `export PATH=$PATH:~/mybpp`
     * Run `bpp ‐‐msci‐create msci.txt` and paste the outputted tree into the control file.
     * Change nloci to number of datasets in sequence file. ( use `grep -cvP '\S' aphid_bpp_loci.txt` to count blank lines in loci file)
     * Put the control file name in the bpp.sh file and run
