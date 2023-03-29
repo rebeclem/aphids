@@ -30,10 +30,37 @@ define B as ASPnl,ASPnl2
 define C as ASPnl,ASPlk
 hybridization C B, S T as Q H tau=yes, yes phi=.0348
 ```
+
 6) To run, first you need to copy the program from github. Then use `export PATH=$PATH:~/mybpp`
     * Run `bpp ‐‐msci‐create msci.txt` and paste the outputted tree into the control file.
-    * Change nloci to number of datasets in sequence file. ( use `grep -cvP '\S' aphid_bpp_loci.txt` to count blank lines in loci file)
-    * Put the control file name in the bpp.sh file and run
-7) Make a new tree for each of your hybridization events.
-8) 
-9) 
+    * Change nloci to number of datasets in sequence file. ( use `grep -cvP '\S' aphid_bpp_loci.txt` to count blank lines in loci file) and other lines as follows:
+```
+     usedata = 1    * 0: no data (prior); 1:seq like
+         nloci = 7064    * number of data sets in seqfile
+
+     cleandata = 0    * remove sites with ambiguity data (1:yes, 0:no)?
+
+*    thetaprior = 3 0.04 e  # Inv-gamma(a, b) for theta (integrated out by default; add E to also sample theta)
+*      tauprior = 3 0.2     # Inv-gamma(a, b) for root tau
+    thetaprior = gamma 2 100  # gamma(a, b) for theta
+      tauprior = gamma 2 10   # gamma(a, b) for root tau
+    phiprior = 1 1  # Beta(a, b) for root tau & Dirichlet(a) for other tau's
+
+      finetune =  1: 3 0.003 0.002 0.00002 0.005 0.9 0.001 0.001 # finetune for GBtj, GBspr, theta, tau, mix
+
+         print = 1 0 0 0   * MCMC samples, locusrate, heredityscalars, Genetrees
+        burnin = 32000
+      sampfreq = 2
+       nsample = 200000
+       threads = 8 1 1* This uses 8 threads on CPU1
+    checkpoint = 10000 10000 * This means first checkpoint is created after 10000 then additional checkpoints afer another 10000
+```
+7) Make a new tree for each of your hybridization events. Put the control file name in the bpp.sh file and run
+
+# Interpreting your results
+
+
+Next step: [Haplotype phasing](haplotype.md) to detect admixture
+
+
+
