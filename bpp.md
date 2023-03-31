@@ -59,6 +59,7 @@ hybridization C B, S T as Q H tau=yes, yes phi=.0348
 
 # Interpreting your results
 
+The output for the A00 BPP run is 3 files: mcmc.txt, out.txt and FakeTree.tre. Copy these files to your computer so we can look at them more closely. `rsync -avh rebecca.clement@ceres.scinet.usda.gov:/home/rebecca.clement/90day_aphid/bpp/myzus/A00/H0/mcmc.txt ./myzus_H0_mcmc.txt` 
 
 Next step: [Haplotype phasing](haplotype.md) to detect admixture
 
