@@ -26,13 +26,13 @@ Pkg.instantiate()
 * Update the [runSNaQ.jl](scripts/runSNaQ.jl) to have the correct csv and tree file names, as well as the correct pathway to your julia project. Then run `sbatch ../../scripts/snaq.sh`.
 
 * The output for this should include files that end in ".out" and ".networks". Use `rsync -avh rebecca.clement@ceres.scinet.usda.gov:/90daydata/aphid_phylogenomics/becca/myzus/snaq .` to copy this to your computer.
-* There, copy the last two lines of your .out files to somewhere like so: 
+* There, copy the first linef of your .out files to somewhere like so: 
 ```
 net1=readTopology("(APHD00036DSP,APHD00071MCER,((APHD00016DFOE,((APHD00022MORN,(((APHD00302MFAT,(MCER,(other_MCER_LIB12394_ERR2236144,other_MCER_LIB5681_ERR2236145)1:0.34020204668869153)1:1.3389582439181718)1:0.3511118648772409,MLYT)1:1.3948488629125004,((APHD00144MVAR,MVAR)1:1.3006271240403702,(MLIG,((MPER,(APHD00117MANT,(other_MPER_G006_SRR3466613,other_MPER_LIB_SRR13326386)1:0.22770050692379168)1:0.265552135594068)1:0.0)#H40:2.387520580453654::0.9651641615961939)1:1.872029848875635)1:1.0669081318869058)1:0.20402802660142075):1.2198090079813604,(APHD00093BHEL,APHD00276BAMY)1:1.7456154826902814)1:0.2555404432661486):0.9158879326927422,(APHD00270MVAR,((APHD00014MORN,APHD00027MASC)1:0.6423756410789097,#H40:0.36456360907732577::0.03483583840380611)1:0.014440375552506414)1:0.252533259169379)1:0.32390463062504393)1;
        with -loglik 9949.899100190261")
  ```
  * Next, graph the log likelihoods using: `scores=[12762.596023673843,9949.899100190261,8013.45791825924,8201.164826088081,7772.645049472616,8121.98400397256]`, then `hmax = collect(0:5)`, then `Using RCall; R"plot"(hmax, scores, type="b", ylab="network score", xlab="hmax", col="blue");` Save this image for further notice. 
- * Plot the trees rooted to BHEL: `rootatnode!(net2,"APHD00093BHEL");plot(net2, showgamma=true, showedgenumber=true)`
+ * Plot the trees rooted to BHEL: `using PhyloPLots; rootatnode!(net2,"APHD00093BHEL");plot(net2, showgamma=true, showedgenumber=true)`
  * The likelihood plot looks like this: 
 ![](figs/myzus_loglik.png)
 
