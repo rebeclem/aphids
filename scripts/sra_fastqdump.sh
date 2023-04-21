@@ -28,5 +28,7 @@ taxon=`echo "${line}"|cut -f2`
 echo $sra_id
 #echo $taxon
 #prefetch -X 9999999999999 $sra_id
-echo "$sra_id/${sra_id}.sra"
+echo "$sra_id/${sra_id}.sra" 
 fastq-dump "$sra_id/${sra_id}.sra" --split-3 --skip-technical
+
+

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# job standard output will go to the file slurm-%j.out (where %j is the job ID)
 
 #SBATCH --time=10:00:00   # walltime limit (HH:MM:SS)
 #SBATCH --nodes=1   # number of nodes
@@ -11,6 +12,6 @@
 
 date
 module load orthofinder
-orthofinder -f aa
-orthofinder -f aa_LTPG
+orthofinder -f aphis/aaLTPG
+orthofinder -f myzus/aaLTPG
 date

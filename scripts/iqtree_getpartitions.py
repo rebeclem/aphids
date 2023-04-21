@@ -1,9 +1,9 @@
 from Bio import AlignIO
 import glob
 
-for fasta_file in glob.glob('OG*pal.fasta_mfgb'):
+for fasta_file in glob.glob('OG*_final.fasta'):
     alignment = AlignIO.read(open(fasta_file), "fasta")
-    outfile_name = fasta_file.replace('pal.fasta_mfgb', 'parts.txt')
+    outfile_name = fasta_file.replace('_final.fasta', '_parts.txt')
     outfile = open(outfile_name, 'w')
     aln_str = str(alignment.get_alignment_length())
     line1 = 'DNA, part1 = 1-%s\\3\n' % (aln_str)

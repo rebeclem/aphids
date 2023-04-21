@@ -24,19 +24,19 @@ genome=~/90day_aphid/snp/aphis/Aphis_fabae_JIC1_v2.scaffolds.braker.filtered.cds
 
 fq1=~/90day_aphid/aphis/hybpiper/${base}_R1_A_trim.fastq.gz
     fq2=~/90day_aphid/aphis/hybpiper/${base}_R2_A_trim.fastq.gz
-    sam=~/90day_aphid/snp/aphis/sam/${base}.aligned.sam
-    bam=~/90day_aphid/snp/aphis/bam/${base}.aligned.bam
-    sorted_bam=~/90day_aphid/snp/aphis/bam/${base}.aligned.sorted.bam
-    raw_bcf=~/90day_aphid/snp/aphis/bcf/${base}_raw.bcf
-    variants=~/90day_aphid/snp/aphis/vcf/${base}_variants.vcf
-    final_variants=~/90day_aphid/snp/aphis/vcf/${base}_final_variants.vcf
+    sam=~/90day_aphid/snp/aphis/nf/sam/${base}.aligned.sam
+    bam=~/90day_aphid/snp/aphis/nf/bam/${base}.aligned.bam
+    sorted_bam=~/90day_aphid/snp/aphis/nf/bam/${base}.aligned.sorted.bam
+    raw_bcf=~/90day_aphid/snp/aphis/nf/bcf/${base}_raw.bcf
+    variants=~/90day_aphid/snp/aphis/nf/vcf/${base}_variants.vcf
+    final_variants=~/90day_aphid/snp/aphis/nf/vcf/${base}_final_variants.vcf 
 
     bwa mem $genome $fq1 $fq2 > $sam
     samtools view -S -b $sam > $bam
     samtools sort -o $sorted_bam $bam
     samtools index $sorted_bam
     bcftools mpileup -O b -o $raw_bcf -f $genome $sorted_bam
-    bcftools call --ploidy 1 -m -v -o $variants $raw_bcf
+    bcftools call --ploidy 1 -m -v -o $variants $raw_bcf 
     /software/7/apps/bcftools/1.14/bin/vcfutils.pl varFilter $variants > $final_variants
 
 
@@ -45,3 +45,4 @@ t2=$(date +"%s")
 diff=$(($t2-$t1))
 echo "[---$SN---] ($(date)) $(($diff / 60)) minutes and $(($diff % 60)) seconds elapsed."
 echo "[---$SN---] ($(date)) $SN COMPLETE."
+

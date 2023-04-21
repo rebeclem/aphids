@@ -9,9 +9,18 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
 
+#--- Start the timer
+t1=$(date +"%s")
+
 module load mafft
 
 # Add the anysymbol flag to make it so that it turns stop codons into X instead of removed
 for f in *aafinal.fasta; do
 mafft --auto --anysymbol ${f} > ${f}_align
 done
+
+#---Complete job
+t2=$(date +"%s")
+diff=$(($t2-$t1))
+echo "[---$SN---] ($(date)) $(($diff / 60)) minutes and $(($diff % 60)) seconds elapsed."
+echo "[---$SN---] ($(date)) $SN COMPLETE."

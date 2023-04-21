@@ -17,3 +17,13 @@ name1=$(sed -n "$SLURM_ARRAY_TASK_ID"p namelist_compress.txt)
 tar --use-compress-program=pigz -cf ${name1}_COI.tar.gz ${name1}_COI
 
 tar --use-compress-program=pigz -cf ${name1}_aa.tar.gz ${name1}_aa
+
+
+#for d in A*COI; do pref="${f%%_*}"; tar --use-compress-program=pigz -cf ${pref}_COI.tar.gz ${pref}_COI; done
+
+#for d in A*aa; do pref="${f%%_*}"; tar --use-compress-program=pigz -cf ${pref}_aa.tar.gz ${pref}_aa; done
+
+#tar --use-compress-program="pigz -k " -cf dir1.tar.gz dir1
+# the next line processes a text file with garli configs 1 per line and uses them as input
+#name1=$(sed -n "$SLURM_ARRAY_TASK_ID"p transcripts_hemip_files1.txt)
+

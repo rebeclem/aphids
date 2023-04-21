@@ -8,12 +8,12 @@ import os
 
 newdict={}
 with open('genes_list3.txt') as f:
-        for line in f:
-                OG=line.split("_",1)[0]
-                seq="_".join(line.split("_",4)[1:3])
-                tax=line.split("_")[1]
-                newname=tax+"-"+OG
-                newdict[seq.strip()]=newname
+	for line in f:
+		OG=line.split("_",1)[0]
+		seq="_".join(line.split("_",4)[1:4])
+		tax=line.split("_")[1]
+		newname=tax+"-"+OG
+		newdict[seq.strip()]=newname
 #print (newdict)
 
 #for x in glob.glob('*.fa'):
@@ -21,19 +21,29 @@ with open('genes_list3.txt') as f:
 #    outfile = taxon + '_final.fasta'
 recs = []
 with open("targets_all_cds.fa", "r") as handle:
-        for record in SeqIO.parse(handle, "fasta"):
-                record.id="_".join(record.name.split("_",3)[0:2])
-                record.id=newdict[record.id]
-                record.description = ''
-                recs.append(record)
-SeqIO.write(recs, "targets_all_OG.fa",'fasta')
+	for record in SeqIO.parse(handle, "fasta"):
+	#	record.id="_".join(record.name.split("_",3)[0:2])
+		record.id=newdict[record.id]
+		record.description = ''
+		recs.append(record)
+SeqIO.write(recs, "targets_cds_OG.fa",'fasta')
 recs_aa=[]
 # Now do the same for the amino acids file.
 with open("single_copy_all_targets.fa","r") as handle:
-        for record in SeqIO.parse(handle, "fasta"):
-                seq="_".join(record.name.split("_",3)[1:3])
-                record.id=newdict[seq]
-                record.description=''
-                recs_aa.append(record)
+	for record in SeqIO.parse(handle, "fasta"):
+		seq=record.name.split("_",3)[1]+"-"+record.name.split("_",3)[0]
+		record.id=seq
+		record.description=''
+		recs_aa.append(record)
 
 SeqIO.write(recs_aa, "targets_aa_OG.fa",'fasta')
+
+#record.id = record.id.replace('.', '_').replace(' ', '')
+#            record.id = taxon + '_' + record.id
+#            record.description = ''
+#            record.seq = Seq(str(record.seq).replace('*', ''))
+#            record.seq = Seq(str(record.seq).replace('.', ''))
+#            recs.append(record)
+#    SeqIO.write(recs, outfile, 'fasta')
+#
+# record.id = taxon.uppercase()

@@ -16,5 +16,7 @@ module load miniconda
 source activate hybpiper
 echo ${SAMPLE}_aa
 hybpiper assemble -r ${SAMPLE}_*_trim.fastq.gz --unpaired ${SAMPLE}_*_BothSingle.fastq.gz -t_aa targets_aa_OG.fa --cpu 20 --prefix ${SAMPLE}_aa --run_intronerate --diamond
+#hybpiper assemble -r APHD00251_S41_*_trim.fastq --unpaired APHD00251_S41_R2_001_BothSingle.fastq -t_aa aphid_6genome_scp_ortho_targets.fasta --cpu 20 --prefix Phylloxera_notabilis --run_intronerate --diamond
+#hybpiper stats -t_aa targets_aa_OG.fa gene namelist_aa.txt
 
 conda deactivate

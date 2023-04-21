@@ -9,4 +9,4 @@
 
 
 module load phyx
-pxcat -s OG*final.fasta -p partitions.txt -o aphis_concat.fasta
+pxcat -s OG*_final.fasta -p partitions.txt -o aphis_concat.fasta

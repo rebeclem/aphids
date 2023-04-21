@@ -9,7 +9,18 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
 
-for f in OG*aafinal.fasta_align; do
+
+#--- Start the timer
+t1=$(date +"%s")
+
+for f in OG*aa_align.fasta; do 
 	geneID="${f%%_*}"
-	../../scripts/pal2nal.pl ${geneID}aafinal.fasta_align ${geneID}nucfinal.fasta -output fasta -nomismatch > ${geneID}_pal.fasta
+../../scripts/pal2nal.pl ${geneID}_aa_align.fasta ${geneID}_nucfinal.fasta -output fasta -nomismatch > ${geneID}_pal.fasta
 done
+
+#---Complete job
+t2=$(date +"%s")
+diff=$(($t2-$t1))
+echo "[---$SN---] ($(date)) $(($diff / 60)) minutes and $(($diff % 60)) seconds elapsed."
+echo "[---$SN---] ($(date)) $SN COMPLETE."
+

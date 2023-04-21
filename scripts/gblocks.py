@@ -4,7 +4,7 @@ import glob, os
 
 gblocks_options = "-t=c -b4=5 -b5=h -e=_mfgb"
 
-for fasta_file in glob.glob("*.fasta"):
+for fasta_file in glob.glob("*pal.fasta"):
 
     fasta = open(fasta_file, 'r').read()
 
@@ -16,15 +16,15 @@ for fasta_file in glob.glob("*.fasta"):
 
     os.system(command)
 
-
+ 
 
 #    gblocks_output = fasta_file[:-15] + "mafft_gblocks.fa"
 
-
+ 
 
 #mafft --localpair --maxiterate 1000 input [> output]
 
-
+ 
 
 #-t=c = codon, to preserve the triplets
 

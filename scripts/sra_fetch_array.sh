@@ -29,3 +29,5 @@ echo $sra_id
 #echo $taxon
 prefetch -X 9999999999999 $sra_id
 #fastq-dump $sra_id/${sra_id}.sra --threads 6 --split-3 --skip-technical -O $sra_id
+
+

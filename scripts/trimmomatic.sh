@@ -12,13 +12,15 @@
 
 name=$(sed -n "$SLURM_ARRAY_TASK_ID"p filenames.txt)
 # start timer
-date 
+date # t1=$(date + "%s")
 echo $name
 
 module load trimmomatic/0.38
 
-java -jar /software/7/apps/trimmomatic/0.38/trimmomatic-0.38.jar PE -threads 10 -phred33 ${name}*_R1_001.fastq.gz ${name}*_R2_001.fastq.gz ${name}_R1_001_trim.fastq.gz ${name}_R1_001_single.fastq.gz ${name}_R2_001_trim.fastq.gz ${name}_R2_001_single.fastq.gz ILLUMINACLIP:/software/7/apps/trimmomatic/0.38/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 HEADCROP:12
+java -jar /software/7/apps/trimmomatic/0.38/trimmomatic-0.38.jar PE -threads 10 -phred33 ${name}*_R1_001.fastq.gz ${name}*_R2_001.fastq.gz ${name}_R1_001_trim.fastq.gz ${name}_R1_001_single.fastq.gz ${name}_R2_001_trim.fastq.gz ${name}_R2_001_single.fastq.gz ILLUMINACLIP:/software/7/apps/trimmomatic/0.38/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 
 #---Complete job
-
+# t2=$(date +"%s")
+# diff=$(($t2-$t1))
+# echo "[---$SN---] ($(date)) $(($diff / 60)) minutes and $(($diff % 60)) seconds elapsed."
 echo "[---$SN---] ($(date)) $SN COMPLETE."

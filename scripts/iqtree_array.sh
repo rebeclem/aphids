@@ -5,7 +5,7 @@
 #SBATCH --array=1-7064%500
 #SBATCH -N 1 -n 4
 #SBATCH -t 30:00
-#SBATCH -p short
+#SBATCH -p short,debug,brief-low
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
 
@@ -18,10 +18,11 @@ t1=$(date +"%s")
 echo "Starting $name1"
 module load iq_tree/2.0-rc1
 
-iqtree -nt AUTO -s ${name1}_pal.fasta_mfgb -spp ${name1}_parts.txt -m TESTMERGE -bb 1000 -pre ${name1}_nucs_ml_1000ufbs
+iqtree -nt AUTO -s ${name1}_final.fasta -spp ${name1}_parts.txt -m TESTMERGE -bb 1000 -pre ${name1}_nucs_ml_1000ufbs 
 
 #---Complete job
 t2=$(date +"%s")
 diff=$(($t2-$t1))
 echo "[---$SN---] ($(date)) $(($diff / 60)) minutes and $(($diff % 60)) seconds elapsed."
 echo "[---$SN---] ($(date)) $SN COMPLETE."
+
