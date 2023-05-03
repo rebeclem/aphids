@@ -37,4 +37,17 @@ net1=readTopology("(APHD00036DSP,APHD00071MCER,((APHD00016DFOE,((APHD00022MORN,(
 ![](figs/myzus_loglik.png)
 
 We can see that the network score decreases quite a bit with 2 hybridization events and maybe more with 4?
-Let's confirm our results with [bpp.](bpp.md)
+
+### ReWorking without outgroups
+Some of the hybridization events that it identified are not within the groups we're looking at. Make a directory called AnalysisNoOut.
+* Copy the alignments to the new directory: `scp Analysis/*_final.fasta AnalysisNoOut/` (For aphis copy just the `*New_final.fasta` ones.
+* Make a file that has all the OGs, `for f in *.fasta; do base="${f%%New_*}"; echo $base > genenames.txt; done`
+* Now remove sequences: APHD00305MDON, APHD00223MSAC, APHD00301HPRU, APHD00270ASPlk, APHD00027ASPnl from aphis
+* From myzus, remove: APHD00016DFOE, APHD00036BBRA, APHD00071MSPgt, APHD00270MVAR, APHD00014MORN, APHD00027MASC, APHD00093BHEL, APHD00276BAMY
+* Make a file called outgroups, load the seqkit module, and do the following: `for f in *.fasta; do baseNewFile="${f%%New_*}_noOut.fasta"; seqkit grep -v -f outgroups.txt $f -o $baseNewFile; done` (this will take a while)
+* Run [iqtree_array_noOutgroup.sh](scripts/iqtree_array_noOutgroup.sh)
+* Next 
+* Run ASTRAL
+* Rerun snaq
+
+Let's confirm our results with [bpp.md](bpp.md)
