@@ -36,8 +36,10 @@ println(Pkg.status())
 # using Pkg
 #Pkg.activate("/home/rebecca.clement/.julia/project1")
 #Pkg.instantiate()
+
+
 using PhyloNetworks
-net0 = readTopology("aphis_astral.tre");
+net0 = readTopology("aphis_8616genes_astral.tre");
 using DataFrames, CSV
 df_sp = DataFrame(CSV.File("aphis_tableCF.csv", pool=false); copycols=false);
 d_sp = readTableCF!(df_sp);

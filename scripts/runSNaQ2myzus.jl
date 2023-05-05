@@ -37,7 +37,7 @@ println(Pkg.status())
 #Pkg.activate("/home/rebecca.clement/.julia/project1")
 #Pkg.instantiate()
 using PhyloNetworks
-net0 = readTopology("myzus_astral.tre");
+net0 = readTopology("myzus_7052genes_astral.tre");
 using DataFrames, CSV
 df_sp = DataFrame(CSV.File("myzus_tableCF.csv", pool=false); copycols=false);
 d_sp = readTableCF!(df_sp);
