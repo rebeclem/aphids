@@ -32,7 +32,7 @@ net1=readTopology("(APHD00036DSP,APHD00071MCER,((APHD00016DFOE,((APHD00022MORN,(
        with -loglik 9949.899100190261")
  ```
  14) Next, graph the log likelihoods using: `scores=[12762.596023673843,9949.899100190261,8013.45791825924,8201.164826088081,7772.645049472616,8121.98400397256]`, then `hmax = collect(0:5)`, then `Using RCall; R"plot"(hmax, scores, type="b", ylab="network score", xlab="hmax", col="blue");` Save this image for further notice. 
- 15) Plot the trees rooted to BHEL: `using PhyloPLots; rootatnode!(net2,"APHD00093BHEL");plot(net2, showgamma=true, showedgenumber=true)`
+ 15) Plot the trees rooted to BHEL: `using PhyloPlots; rootatnode!(net2,"APHD00093BHEL");plot(net2, showgamma=true, showedgenumber=true)`
  * The likelihood plot looks like this: 
 ![](figs/myzus_loglik.png)
 
