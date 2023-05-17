@@ -21,4 +21,8 @@ The basic workflow is (referenceing [this](https://sateeshperi.github.io/nextflo
 scaffold1  1        A/A       A/G       G|A
 scaffold1  1        N/N       T/T       T|C
 ```
-    * Use [this](scripts/parseVCFs.py) to put together multiple VCFs
+
+7. Use [this](scripts/parseVCFs.py) to put together multiple VCFs
+    * First get an interactive node with `salloc`. Activate your virtual environment: `source ~/90day_aphid/conda_env/virt_test/bin/activate`. You may have to install numpy (load miniconda module and then `pip3 install --user numpy`, then `pip3 install --user parseVCF`). May also need to load tabix.
+    * This doesn't work. We'll have to figure out something else
+
