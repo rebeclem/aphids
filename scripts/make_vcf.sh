@@ -35,8 +35,8 @@ fq1=~/90day_aphid/aphis/hybpiper/${base}_R1_A_trim.fastq.gz
     samtools view -S -b $sam > $bam
     samtools sort -o $sorted_bam $bam
     samtools index $sorted_bam
-    bcftools mpileup -O b -o $raw_bcf -f $genome $sorted_bam
-    bcftools call --ploidy 1 -m -v -o $variants $raw_bcf 
+    bcftools mpileup -O b -o $raw_bcf -f $genome $sorted_bam # -O (output type). can also do -b (bam list of alignment files) -q 20 (minimum mapping quality), -Q 30 (minimum base quality for a base to be considered)
+    bcftools call --ploidy 1 -m -v -o $variants $raw_bcf # -v outputs variant sites only. -m multi-allelic caller.
     /software/7/apps/bcftools/1.14/bin/vcfutils.pl varFilter $variants > $final_variants
 
 
