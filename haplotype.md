@@ -80,3 +80,6 @@ aphis_genoNew<-NAtoNuc(aphis_inf,outnew)
 10. 
 Maybe we need to merge the vcf files using an actual thing. Trying with bcftools -merge. First need to pip install bgzip in a virtual environment.
 
+For myzus: bcftools mpileup gave "mpileup -f ../Myzus_varians_v1.1.scaffolds.braker.filtered.cds.LTPG.fa -b list.bam -q 20 -Q 30" `bcftools stats myzus.vcf.gz >file.stats` gave 4722672 records, 4699258 SNPs, and 23414 INDELS.
+
+After filtering: `bcftools filter -s LowQual -e '%QUAL<50'` the command `bcftools stats bcf_filter.vcf.gz >filtered_file.stats` gave 4722672 records with 4699258 SNPS
