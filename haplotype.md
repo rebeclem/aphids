@@ -82,4 +82,6 @@ Maybe we need to merge the vcf files using an actual thing. Trying with bcftools
 
 For myzus: bcftools mpileup gave "mpileup -f ../Myzus_varians_v1.1.scaffolds.braker.filtered.cds.LTPG.fa -b list.bam -q 20 -Q 30" `bcftools stats myzus.vcf.gz >file.stats` gave 4722672 records, 4699258 SNPs, and 23414 INDELS.
 
-After filtering: `bcftools filter -s LowQual -e '%QUAL<50'` the command `bcftools stats bcf_filter.vcf.gz >filtered_file.stats` gave 4722672 records with 4699258 SNPS
+After filtering: `bcftools filter -s LowQual -e '%QUAL<50' | bedtools intersect -header -wa -a stdin -b $TARGETS` the command `bcftools stats bcf_filter.vcf.gz >filtered_file.stats` gave 552704 records with 548570 SNPS and 4134 INDELS.
+
+For aphis: 5438524 records, 5402431 SNPs, indels: 36093. After filtering, records: 474082, SNPs: 468170, INDELS: 5912.
