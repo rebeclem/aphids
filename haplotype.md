@@ -34,14 +34,8 @@ vcftools --gzvcf aphis_output_snps-only.vcf.recode.vcf \
    --recode-INFO-all \
    --out aphis_output_snps-only_max_missing_1_mac_3_minq_30
 ```
-14. Next, we need to process these to convert them to a .geno file. See [here](https://github.com/gibert-Fab/ABBA-BABA). We want it too look like this:
-```
-#CHROM      POS      ind1      ind2      ind3
-scaffold1  1        A/A       A/G       G|A
-scaffold1  1        N/N       T/T       T|C
-```
-
-7. 
+    * After this filtering, Aphis kept 585568 SNPs and Myzus kept 1249280 SNPs.
+    * To find your average quality score do `tail -n 1249281 myzus_output_snps-only_max_missing_1_mac_3_minq_50.recode.vcf | cut -f 6 | sort -n | paste -sd+ - | bc | awk '{print $1/1249281}'` (gives 835.2 for Myzus) and `tail -n 585568 aphis_output_snps-only_max_missing_1_mac_3_minq_50.recode.vcf | cut -f 6 | sort -n | paste -sd+ - | bc | awk '{print $1/585568}'` gives 1373 for Aphis.
 8. Make a text file called "aphis_pop.txt" with the first column the names in aphis_genoNew and the second column the species names. `ls *final_variants.vcf | cut -c1-15 > aphis_pop.txt` then add a column with species names
 9. Using the python files from [here](https://github.com/simonhmartin/tutorials/tree/master/ABBA_BABA_whole_genome), run the following `python ../genomics_general-master/freq.py -g myzus_new.geno -p ornatus -p antirhinii -p varians -p fataunae -p cerasi -p persicae --popsFile  myzus_pop.txt --target derived -o myzus75.derFreq.tsv` and for myzus do `python ../genomics_general-master/freq.py -g aphis_new.geno -p spiraecola -p craccivora -p ASPnl -p aurantii -p ruborum -p ASPnl2 -p coreopsidis -p nasturtii -p fabae -p sedi -p ASPsv -p ASPva -p nerii -p Melanaphis -p viburniphila -p affinis -p cornifoliae -p ASPlk -p Hyalopterus -p glycines -p gossypii -p urticata --popsFile  aphis_pop.txt --target derived -o aphis75.derFreq.tsv`.
 10. 
