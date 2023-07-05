@@ -45,7 +45,13 @@ $ make
 ```
 10. Run the [dsuite.sh](scripts/dsuite_aphis.sh) using your filtered vcf file and this pop.txt file.
 
-Next step: Interpreting dsuite results
+### Interpreting dsuite results
+Dsuite will output a file that ends in BBAA.txt and one that ends in dmin.txt.
+    * Use this [r script](scripts/dsuite.R) to calculate what proportion are significant
+    * Next, download these scripts plot_d.rb and plot_f4ratio.rb from [this site](https://github.com/mmatschiner/tutorials/tree/master/analysis_of_introgression_with_snp_data)
+    * Then, make a text file that has the species names using `cut -f 2 myzus_pop.txt | sort | uniq > myzus_plot_order.txt` or any order you want
+    * Make heatmaps using `ruby plot_d.rb myzus_pop_BBAA.txt myzus_plot_order.txt 0.7 myzus_BBAA_D.svg` and `ruby plot_f4ratio.rb myzus_pop_BBAA.txt myzus_plot_order.txt 0.2 myzus_BBAA_f4ratio.svg`
+    * Next step: see if it's different when you use a tree in the analysis and figure out why the crap the heat maps aren't working for this.
 
 
 
