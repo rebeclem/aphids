@@ -15,13 +15,14 @@ date
 module load bcftools
 
 # Set output name
-outname="aphis"
+outname="myzus2"
 
 # Put list of bam files into a file
 ls *sorted.bam >list.bam
 
 # set reference genome location
-GEN=../Aphis_fabae_JIC1_v2.scaffolds.braker.filtered.cds.fa
+#GEN=../Aphis_fabae_JIC1_v2.scaffolds.braker.filtered.cds.fa
+GEN=../Myzus_varians_v1.1.scaffolds.braker.filtered.cds.LTPG.fa
 
 bcftools mpileup \
         -f $GEN \
