@@ -37,6 +37,14 @@ vcftools --gzvcf aphis_output_snps-only.vcf.recode.vcf \
 ```
     * After this filtering, Aphis kept 585568 SNPs and Myzus kept 1249280 SNPs.
     * To find your average quality score do `tail -n 1249281 myzus_output_snps-only_max_missing_1_mac_3_minq_50.recode.vcf | cut -f 6 | sort -n | paste -sd+ - | bc | awk '{print $1/1249281}'` (gives 835.2 for Myzus) and `tail -n 585568 aphis_output_snps-only_max_missing_1_mac_3_minq_50.recode.vcf | cut -f 6 | sort -n | paste -sd+ - | bc | awk '{print $1/585568}'` gives 1373 for Aphis.
+| Sample | Aphis | Aphis (including others) | Myzus | Myzus (including others) |
+| --- | --- | --- | --- | --- |
+|Number of samples |34 |39 |15 |19
+|Number of records |5438524 |7224421 |4722672 |4954520 |
+|SNPs |5402431 |7187970 |4699258 |4929427 |
+|INDELS |36093 |36451 |23414 |25093 |
+|Multi-allelic SNP sites |673149 |889106 |600661 |666330|
+|SNPs after filtering |666330 | |666330 | |
 8. Make a text file called "aphis_pop.txt" with the first column the names in aphis_genoNew and the second column the species names. `tail -n 585569 aphis_output_snps-only_max_missing_1_mac_3_minq_50.recode.vcf | head -n 1 | xargs -n 1 > aphis_pop.txt` then delete the first lines and add a tab and a column with species names. Use xxx for species that you want ignored.
 9. Now after installing dsuite with:
 ```
