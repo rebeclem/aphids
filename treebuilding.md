@@ -46,6 +46,9 @@ Although concatenation methods can give reliably tree inferences, especially wit
   * sed -i 's/APHD00079AGOS/APHD00079ANAS/; s/APHD00101ANER/APHD00101ASPsv/; s/APHD00122ASPI/APHD00122ASPva/; s/APHD00232ASP/APHD00232AVIB/; s/APHD00265ANA/APHD00265ACORN/; s/(AFAB/(other_AFAB_JIC1/; s/,AGLY/,other_AGLY_4v2/; s/(AGOS/(other_AGOS_1033E/; s/(ATHA/(other_ATHA_LTPG/' aphis_astral.tre
 * Download the log file and astral tree 
 
+## Building mitochondrial tree
+The script we used to pull out COI also included the other of the 13 mitochondrial genes. We will concatenate them and make a tree
+
 ## Dealing with long branches
 For *Aphis*, APHD00272AAUR has a very long branch. This is probably because we also sequenced a parasitoid (Lipolexis oregmae (parasitoid)). We need to remove APHD00272AAUR from the alignments where it has too long of a branch. First, we will produce a list of genes and associated distances between the two Aphis aurantii species. Then we will graph the distances to look for separation between the ones that are close and far. Finally, we will remove the APHD00272AAUR from the alignments that it has a long branch for and then re-estimate gene trees and concatenation tree.
 * Do something about the long branches. APHD00272AAUR has a parasitoid in it. Run [long_branch.py](scripts/long_branch.py) after you `source activate ete3` to get a list of distances between the two A. aurantii species as well as total tree lengths and longest branches.
