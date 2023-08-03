@@ -47,7 +47,7 @@ Although concatenation methods can give reliably tree inferences, especially wit
 * Download the log file and astral tree 
 
 ## Building mitochondrial tree
-The script we used to pull out COI also included the other of the 13 mitochondrial genes. We will concatenate them and make a [mitochondrial tree](mito_tree.sh)
+The script we used to pull out COI also included the other of the 13 mitochondrial genes. We will concatenate them and make a [mitochondrial tree](mito_tree.md)
 
 ## Dealing with long branches
 For *Aphis*, APHD00272AAUR has a very long branch. This is probably because we also sequenced a parasitoid (Lipolexis oregmae (parasitoid)). We need to remove APHD00272AAUR from the alignments where it has too long of a branch. First, we will produce a list of genes and associated distances between the two Aphis aurantii species. Then we will graph the distances to look for separation between the ones that are close and far. Finally, we will remove the APHD00272AAUR from the alignments that it has a long branch for and then re-estimate gene trees and concatenation tree.
