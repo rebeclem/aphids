@@ -4,7 +4,7 @@
 
 To build a tree with concatenation, we need a fasta file. In the fasta_output_aa directory of hybpiper, we have 8631 (for *Aphis*) and 7064 (for *Myzus*) .FAA files and .FNA files. Each of these has sequences from each species of aphid, but we also need to align the original target files that we mapped to from the genomes online. The names of the sequences in the .FAA and .FNA files don't have the gene name and have descriptions like "APHD00002ASPI_aa multi_hit_stitched_contig_comprising_2_hits", while the names in the target files (targets_aa_OG.fa and targets_all_OG.fa) are formatted with the name and the gene "AFAB-OG0003568".
 
-1) First, we need to rename the sequences in the .FAA and .FNA files. Allocate an active node with `salloc`. Load miniconda and a python environment then use the command: `python ../../../scripts/name_change_FAA.py` to run [name_change_FAA.py](scripts/name_change_FAA.py). This script renames the sequences in the .FAA and .FNA files to be in the format ">APHD00022MORN-OG0005271", then adds the matching sequences from each of the target files and results in files that end in "\_aafinal.fasta" for the amino acids and " \_nucfinal.fasta" for the nucleotide files. This takes a few hours.
+1) First, we need to rename the sequences in the .FAA and .FNA files. Allocate an active node with `salloc`. Load miniconda and a python environment then use the command: `python ../../../scripts/name_change_FAA.py` to run [name_change_FAA.py](scripts/name_change_FAA.py) in the fasta_output folder. This script renames the sequences in the .FAA and .FNA files to be in the format ">APHD00022MORN-OG0005271", then adds the matching sequences from each of the target files and results in files that end in "\_aafinal.fasta" for the amino acids and " \_nucfinal.fasta" for the nucleotide files. This takes a few hours.
 2) Check to make sure all of the files are there using: `ls *_nucfinal.fasta | wc -l` and `ls *FAA | wc -l`
 3) Also check how many of these have complete data (at least one sequence for every taxa) with `grep -c "^>" *FNA | grep -c "14"` for Myzus (Should be 6182) and `grep -c "^>" *FNA | grep -c "33"` for Aphis (there are only 46 of these. 7880 have at least 30 sequences).
 4) Make a directory called "Analysis" in both the *Aphis* and *Myzus* directories and transfer all the files from fasta_output_aa directory using `mv *.fasta ../../Analysis`. 
@@ -47,7 +47,7 @@ Although concatenation methods can give reliably tree inferences, especially wit
 * Download the log file and astral tree 
 
 ## Building mitochondrial tree
-The script we used to pull out COI also included the other of the 13 mitochondrial genes. We will concatenate them and make a tree
+The script we used to pull out COI also included the other of the 13 mitochondrial genes. We will concatenate them and make a [mitochondrial tree](mito_tree.sh)
 
 ## Dealing with long branches
 For *Aphis*, APHD00272AAUR has a very long branch. This is probably because we also sequenced a parasitoid (Lipolexis oregmae (parasitoid)). We need to remove APHD00272AAUR from the alignments where it has too long of a branch. First, we will produce a list of genes and associated distances between the two Aphis aurantii species. Then we will graph the distances to look for separation between the ones that are close and far. Finally, we will remove the APHD00272AAUR from the alignments that it has a long branch for and then re-estimate gene trees and concatenation tree.
