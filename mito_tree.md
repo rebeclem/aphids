@@ -37,4 +37,5 @@ done
     * Then I remembered that we got rid of the other AAUR bc we couldn't sort out which were parasitoids. Remove that sequence and run again: `iqtree2 -s mito_concat.fasta -p partitions.txt -nt AUTO -m TESTMERGE -bb 1000 -pre mito_iqtree_1AAUR`
 
 Now the tree looks like:
+
 ![mito tree 3](figs/mito_iqtree.treefile)
