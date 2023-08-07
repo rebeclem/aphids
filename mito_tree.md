@@ -38,4 +38,4 @@ done
 
 Now the tree looks like:
 
-![mito tree 3](figs/mito_iqtree.treefile)
+![mito tree 3](figs/mito_iqtree_1AAUR.treefile.png)
