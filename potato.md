@@ -9,6 +9,11 @@ We will run orthofinder on aphids that have similar sequencing quality (ie long 
     * Sitobion has periods at the end of lines. Remove them `sed 's/\.$//g' Sitobion_miscanthi_Chr_genome_final_gene.gff3.pep > Proteomes/Sitobion_miscanthi.fa`
     * Run orthofinder. `module load orthofinder; orthofinder -f Proteomes`
     * Next step: Summarize orthofinder findings--how many single copy?
+
+Results: OrthoFinder assigned 210222 genes (90.2% of total) to 19253 orthogroups. Fifty percent of all genes were in orthogroups with 12 or more genes (G50 was 12) and were contained in the largest 5255 orthogroups (O50 was 5255). There were 5068 orthogroups with all species present and 1655 of these consisted entirely of single-copy genes. Here is the species tree.
+![Figure from potato orthofinder](figs/Orthofinder_species_tree.png)
+
+
     * Then: Synteny
 
 
