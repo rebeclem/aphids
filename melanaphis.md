@@ -1,9 +1,40 @@
 # Mitogenome for Melanaphis
 
+There is a new record of *Melanaphis donacis* that we are going to publish the mitochondria for. To do this, first, I'll assemble contigs using spades.
+    * Load the spades module, then run `spades.py -1 APHD00305MDON_R1.fastq.gz -2 APHD00305MDON_R2.fastq.gz -s APHD00305MDON_A_BothSingle.fastq.gz -o spades_MDON`
+    * It assembled the reads into 115295 contigs. We'll use these as input for the next run of mitochondria.
+    * Also it looks like you can use more than one reference database. In [NCBI](https://www.ncbi.nlm.nih.gov/nuccore) use the search term "hemiptera mitochondrion complete genome", then narrow to RefSeq for source databases. This gives 703 matches. Download these as a .gb file. 
+    * Concatenate this with the Melanaphis sacchari genbank file (which is not refseq quality). `cat Melanaphis_sacchari.gb hemiptera_refseq.gb > hemiptera_MSAC.gb`
+    * Run mitofinder with the contigs.fasta output file from spades.
+        * Problem: -orf114 and a bunch of other genes aren't recognized. Solution: delete the genbank from that weird fungus.
+-GIY-YIGendonuclease: NC_049089
+ -intron-encodedendonucleaseaI1: NC_049089
+ -ribosomalproteinS3
+ -ATPsynthaseF0subunita
+ -endonuclease
+ -LAGLIDADGendonuclease
+ -reversetranscriptase
+ -ATPsynthaseF0subunitc
+ -alpha-beta-hydrolase
+ -ATPasesubunit8
+ -hypotheticalprotein
+ -ATPasesubunit6
+
 ## Try with [mitofinder](https://github.com/RemiAllio/MitoFinder)
     * On an interactive node, activate environment, load miniconda, and then `conda install mitofinder megahit python=2.7`.
     * We'll use [this reference](https://www.ncbi.nlm.nih.gov/nuccore/NC_050904.1) from *Hyalopterus pruni* (Note, [this one](https://www.ncbi.nlm.nih.gov/nuccore/MW811104.1) is Melanaphis sacchari, but is not a refseq one.)
     * This command: `mitofinder -j melanaphis -1 APHD00305MDON_R1.fastq.gz -2 APHD00305MDON_R2.fastq.gz -r Melanaphis_sacchari.gb -o 5 -p 20 -m 10`
     * The conda one isn't working so instead, load singularity module `module load singularityCE`, download the stuff `singularity pull --arch amd64 library://remiallio/default/mitofinder:v1.4.1`
     * Or use [mitofinder.sh](scripts/mitofinder.sh). 
-    
+
+Mitofinder gave me 5 different contigs. 
+    * Contig 1 (17,753bp) aligns really well with the ND5 gene. Last ~7000 matches really well to Aphis gossypii chromosome 2. 
+    * Contig 2 (12,356bp) aligns well with rrnS, rrnL, nd1, cytB, nd6, nd4. Last bit matches to Aphis gossypii chromosome 2, 3, 4, and 1.
+    * Contig 3 (6,954bp) aligns well with nd2, cox1, cox2, ATP6, COX3, nd3
+    * Contig 4 (24,196bp) doesn't seem like it lines up with anything. Matches to Tuberolachnus chromosome 3, Melanaphis mitochondrion, Aphis gossypii chromosome 1
+    * Contig 5 (8,063bp) doesn't match well with anything. Matches to Hyalopterus pruni mitochondrion.
+
+
+
+From CLC:
+    * I assembled all the paired reads into contigs. Of these 53,223 contigs, I filtered to contigs that were between 12000 and 20000 in consensus length, then sorted by coverage. One of them, contig 209, had 94991 coverage--the rest had <12K. 
