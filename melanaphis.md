@@ -9,20 +9,21 @@ There is a new record of *Melanaphis donacis* that we are going to publish the m
     * The conda one isn't working so instead, load singularity module `module load singularityCE`, download the stuff `singularity pull --arch amd64 library://remiallio/default/mitofinder:v1.4.1`
     * Or use [mitofinder.sh](scripts/mitofinder.sh). 
 
-Mitofinder gave me 5 different contigs. 
-    * Contig 1 (17,753bp) aligns really well with the ND5 gene. Last ~7000 matches really well to Aphis gossypii chromosome 2. 
-    * Contig 2 (12,356bp) aligns well with rrnS, rrnL, nd1, cytB, nd6, nd4. Last bit matches to Aphis gossypii chromosome 2, 3, 4, and 1.
-    * Contig 3 (6,954bp) aligns well with nd2, cox1, cox2, ATP6, COX3, nd3
-    * Contig 4 (24,196bp) doesn't seem like it lines up with anything. Matches to Tuberolachnus chromosome 3, Melanaphis mitochondrion, Aphis gossypii chromosome 1
-    * Contig 5 (8,063bp) doesn't match well with anything. Matches to Hyalopterus pruni mitochondrion.
-    Tripp recommended I assemble contigs first using spades.
+Mitofinder gave me 5 different contigs
+- Contig 1 (17,753bp) aligns really well with the ND5 gene. Last ~7000 matches really well to Aphis gossypii chromosome 2. 
+- Contig 2 (12,356bp) aligns well with rrnS, rrnL, nd1, cytB, nd6, nd4. Last bit matches to Aphis gossypii chromosome 2, 3, 4, and 1.
+- Contig 3 (6,954bp) aligns well with nd2, cox1, cox2, ATP6, COX3, nd3
+- Contig 4 (24,196bp) doesn't seem like it lines up with anything. Matches to Tuberolachnus chromosome 3, Melanaphis mitochondrion, Aphis gossypii chromosome 1
+- Contig 5 (8,063bp) doesn't match well with anything. Matches to Hyalopterus pruni mitochondrion.
+
+Tripp recommended I assemble contigs first using spades.
     To do this, first, I'll assemble contigs using spades.
-    * Load the spades module, then run `spades.py -1 APHD00305MDON_R1.fastq.gz -2 APHD00305MDON_R2.fastq.gz -s APHD00305MDON_A_BothSingle.fastq.gz -o spades_MDON`
-    * It assembled the reads into 115295 contigs. We'll use these as input for the next run of mitochondria.
-    * Also it looks like you can use more than one reference database. In [NCBI](https://www.ncbi.nlm.nih.gov/nuccore) use the search term "hemiptera mitochondrion complete genome", then narrow to RefSeq for source databases. This gives 703 matches. Download these as a .gb file. 
-    * Concatenate this with the Melanaphis sacchari genbank file (which is not refseq quality). `cat Melanaphis_sacchari.gb hemiptera_refseq.gb > hemiptera_MSAC.gb`
-    * Run mitofinder with the contigs.fasta output file from spades.
-        * Problem: -orf114 and a bunch of other genes aren't recognized. Solution: delete the genbank from that weird fungus.
+* Load the spades module, then run `spades.py -1 APHD00305MDON_R1.fastq.gz -2 APHD00305MDON_R2.fastq.gz -s APHD00305MDON_A_BothSingle.fastq.gz -o spades_MDON`
+* It assembled the reads into 115295 contigs. We'll use these as input for the next run of mitochondria.
+* Also it looks like you can use more than one reference database. In [NCBI](https://www.ncbi.nlm.nih.gov/nuccore) use the search term "hemiptera mitochondrion complete genome", then narrow to RefSeq for source databases. This gives 703 matches. Download these as a .gb file. 
+* Concatenate this with the Melanaphis sacchari genbank file (which is not refseq quality). `cat Melanaphis_sacchari.gb hemiptera_refseq.gb > hemiptera_MSAC.gb`
+* Run mitofinder with the contigs.fasta output file from spades.
+* Problem: -orf114 and a bunch of other genes aren't recognized. Solution: delete the genbank from that weird fungus.
 -GIY-YIGendonuclease: NC_049089
  -intron-encodedendonucleaseaI1: NC_049089
  -ribosomalproteinS3
@@ -38,6 +39,13 @@ Mitofinder gave me 5 different contigs.
 
 This resulted in 15 contigs. Most of these don't align well with the CLC output. One is 17K bp, the rest are shorter than 8K. The 17K one blasts to Adineta vaga chromosome 3-- a rotifer? or Aphis gossypii chromosome 3. 
 
+Try: mitofinder with hemiptera reference and raw reads (MDON_hemip_ref): 
+I'll also try running mitofinder with spades contigs with only 1 reference (MDON_contig_HPRU).
+I'll also try running mitofinder with the numt setting--see if that does anything (MDON_numt). Concatenate all the files generated with `cat MDON2_mtDNA_contig_[0-9].fasta MDON2_mtDNA_contig_[0-9][0-9].fasta > all_MDON2_contigs.fasta`. Then run `singularity run mitofinder_v1.4.1.sif --numt -j MDON_numt -a 90day_aphid/melanaphis/MDON2/MDON2_MitoFinder_mitfi_Final_Results -r hemiptera_MSAC.gb -o 5 -p 20 -m 10`
 
-From CLC:
-    * I assembled all the paired reads into contigs. Of these 53,223 contigs, I filtered to contigs that were between 12000 and 20000 in consensus length, then sorted by coverage. One of them, contig 209, had 94991 coverage--the rest had <12K. 
+
+### From CLC:
+* I assembled all the paired reads into contigs. Of these 53,223 contigs, I filtered to contigs that were between 12000 and 20000 in consensus length, then sorted by coverage. One of them, contig 209, had 94991 coverage--the rest had <12K.
+
+Next: Use mitos to circularize.
+* I'm using the fasta file generated by CLC.
