@@ -37,11 +37,12 @@ Tripp recommended I assemble contigs first using spades.
  -hypotheticalprotein
  -ATPasesubunit6
 
-This resulted in 15 contigs. Most of these don't align well with the CLC output. One is 17K bp, the rest are shorter than 8K. The 17K one blasts to Adineta vaga chromosome 3-- a rotifer? or Aphis gossypii chromosome 3. 
+This (MDON2--spades contigs as input, hemiptera as reference) resulted in 15 contigs. Most of these don't align well with the CLC output. One is 17K bp, the rest are shorter than 8K. The 17K one blasts to Adineta vaga chromosome 3-- a rotifer? or Aphis gossypii chromosome 3. 
 
-Try: mitofinder with hemiptera reference and raw reads (MDON_hemip_ref): 
-I'll also try running mitofinder with spades contigs with only 1 reference (MDON_contig_HPRU).
-I'll also try running mitofinder with the numt setting--see if that does anything (MDON_numt). Concatenate all the files generated with `cat MDON2_mtDNA_contig_[0-9].fasta MDON2_mtDNA_contig_[0-9][0-9].fasta > all_MDON2_contigs.fasta`. Then run `singularity run mitofinder_v1.4.1.sif --numt -j MDON_numt -a 90day_aphid/melanaphis/MDON2/MDON2_MitoFinder_mitfi_Final_Results -r hemiptera_MSAC.gb -o 5 -p 20 -m 10`
+Try: 
+* mitofinder with hemiptera reference and raw reads (MDON_hemip_ref): Found 17 contigs. A few are big.
+* I'll also try running mitofinder with spades contigs with only 1 reference (MDON_contig_HPRU): Found 5 contigs.
+* I'll also try running mitofinder with the numt setting--see if that does anything (MDON_numt). Concatenate all the files generated with `cat MDON2_mtDNA_contig_[0-9].fasta MDON2_mtDNA_contig_[0-9][0-9].fasta > all_MDON2_contigs.fasta`. Then run `singularity run mitofinder_v1.4.1.sif --numt -j MDON_numt -a 90day_aphid/melanaphis/MDON2/MDON2_MitoFinder_mitfi_Final_Results -r hemiptera_MSAC.gb -o 5 -p 20 -m 10`: This didn't really seem to work.
 
 
 ### From CLC:
