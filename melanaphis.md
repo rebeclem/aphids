@@ -23,7 +23,7 @@ Tripp recommended I assemble contigs first using spades.
 * Load the spades module, then run `spades.py -1 APHD00305MDON_R1.fastq.gz -2 APHD00305MDON_R2.fastq.gz -s APHD00305MDON_A_BothSingle.fastq.gz -o spades_MDON`
 * It assembled the reads into 115295 contigs. We'll use these as input for the next run of mitochondria.
    * Blast to see if you can find genes in it. On an interactive node, use `module load blast+`, then `makeblastdb -dbtype nucl -in ../spades_MDON/contigs.fasta`
-   * Run blast with `blastn -db ../spades_MDON/contigs.fasta -evalue 1e-5 -outfmt 7`
+   * Run blast with `blastn -db ../spades_MDON/contigs.fasta -query MDON_cox1.fasta -evalue 1e-5 -outfmt 7`
 * Also it looks like you can use more than one reference database. In [NCBI](https://www.ncbi.nlm.nih.gov/nuccore) use the search term "hemiptera mitochondrion complete genome", then narrow to RefSeq for source databases. This gives 703 matches. Download these as a .gb file. 
 * Concatenate this with the Melanaphis sacchari genbank file (which is not refseq quality). `cat Melanaphis_sacchari.gb hemiptera_refseq.gb > hemiptera_MSAC.gb`
 * Run mitofinder with the contigs.fasta output file from spades.
