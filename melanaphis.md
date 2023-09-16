@@ -88,7 +88,9 @@ The contig that is 24,196 seems to only have a small portion matching mitochondr
 * It found 1 contig with 22022 bp from 75680 assembled reads with average organelle coverage of 579.
 * Part of this has ~7K bp reversed.
 * Try with raw reads--this worked! 16848 bp for a circularized contig!
-* Increasing kmer length didn't make a difference
+* Increasing kmer length to 63 didn't make a difference
+* Increasing kmer length to 43 and insert size to 262 made contig 16172 long.
+* Trying with a longer seed than just cox1: gave 15974bp
 ```
 Project:
 -----------------------
@@ -107,8 +109,8 @@ Chloroplast sequence  =
 
 Dataset 1:
 -----------------------
-Read Length           = 151
-Insert size           = 240
+Read Length           = 150
+Insert size           = 262
 Platform              = illumina
 Single/Paired         = PE
 Combined reads        =
