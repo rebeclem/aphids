@@ -88,4 +88,45 @@ The contig that is 24,196 seems to only have a small portion matching mitochondr
 * It found 1 contig with 22022 bp from 75680 assembled reads with average organelle coverage of 579.
 * Part of this has ~7K bp reversed.
 * Try with raw reads--this worked! 16848 bp for a circularized contig!
+* Increasing kmer length didn't make a difference
+```
+Project:
+-----------------------
+Project name          = MDON
+Type                  = mito
+Genome Range          = 12000-22000
+K-mer                 = 33
+Max memory            =
+Extended log          = 0
+Save assembled reads  = no
+Seed Input            = ../MDON_cox1.fasta
+Extend seed directly  = no
+Reference sequence    = ../MSAC_mito.fasta
+Variance detection    =
+Chloroplast sequence  =
+
+Dataset 1:
+-----------------------
+Read Length           = 151
+Insert size           = 240
+Platform              = illumina
+Single/Paired         = PE
+Combined reads        =
+Forward reads         = APHDOO305_S99_R1_001.fastq.gz
+Reverse reads         = APHDOO305_S99_R2_001.fastq.gz
+Store Hash            =
+
+Heteroplasmy:
+-----------------------
+MAF                   =
+HP exclude list       =
+PCR-free              =
+
+Optional:
+-----------------------
+Insert size auto      = yes
+Use Quality Scores    = no
+Reduce ambigious N's  =
+Output path           =
+```
 * 
