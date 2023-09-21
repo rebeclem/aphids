@@ -53,8 +53,8 @@ Try:
 |Reference|M.sacchari|H.pruni|H.pruni|703 Hemiptera | 703 Hemiptera | 43 Aphididae | 43 Aphididae | M. sacchari and H. pruni | M. sacchari and H. pruni | MSAC and HPRU |
 |Input | Raw fastq | Raw fastq | Contigs from SPAdes | Contigs from SPAdes | Raw Fastq | Raw Fastq | Contigs from SPAdes | Raw reads| Contigs that assembled to CLC | Raw data | 
 |Contigs found | 4 | 5 | 5 | 15 | 17 | 5 | 6 | 5|5 | 4|
-|Longest contig |24,196 |24,196|8055 | 17,251 | 24,196 | 5403 | 8055 | | 5497| |
-|Genes found | 15 | 14 | 11 | 14 | 15 | 15 | 12 |15 |15 | |
+|Longest contig |24,196 |24,196|8055 | 17,251 | 24,196 | 5403 | 8055 | | 5497|7846 |
+|Genes found | 15 | 14 | 11 | 14 | 15 | 15 | 12 |15 |15 | 15|
 |Non-matching genes | 0| 0 | 0 | 3 (Cladosporium) | 1 (Cladosporium)| 0 | | | 0| |
 
 The contig that is 24,196 seems to only have a small portion matching mitochondrial reads (COX3)--the rest maps to A. gossypii chromosome 1. 
@@ -80,7 +80,12 @@ The contig that is 24,196 seems to only have a small portion matching mitochondr
     * ND6 starts 45 later, ends 9 early
     * Cytb starts 33 alter, ends 45 early,
     * ND1 ends 18 early, starts 18 late
-    * 
+ * Mitofinder annotations (compared to mitoZ)
+    * ND2 ends earlier than a stop codon
+    * ATP6 starts 3bp later (but also on M)
+    * ND5 ends earlier than the stop codon, starts 12 later (but also on M)
+    * lrRNA ends 19bp earlier, starts 204bp later
+    * srRNA ends 7bp later
 
 # BWA
 * `bwa index -p CLCref CLCref.fa` Index the reference from CLC
@@ -147,4 +152,7 @@ Use Quality Scores    = no
 Reduce ambigious N's  =
 Output path           =
 ```
-* 
+
+## GetOrganelle
+I'll be using [this example](https://github.com/Kinggerm/GetOrganelle/wiki/Example-4). First install, get into a conda environment `source ~/90day_aphid/conda_env/virt_test/bin/activate` then `module load miniconda`, then use `conda install -c bioconda getorganelle`
+Couldn't install. Gave me error of disk quota exceeded.
