@@ -52,7 +52,7 @@ Try:
 |---|---|---|---|---|---|---|---|---|---|---|
 |Reference|M.sacchari|H.pruni|H.pruni|703 Hemiptera | 703 Hemiptera | 43 Aphididae | 43 Aphididae | M. sacchari and H. pruni | M. sacchari and H. pruni | MSAC and HPRU |
 |Input | Raw fastq | Raw fastq | Contigs from SPAdes | Contigs from SPAdes | Raw Fastq | Raw Fastq | Contigs from SPAdes | Raw reads| Contigs that assembled to CLC | Raw data | 
-|Contigs found | 4 | 5 | 5 | 15 | 17 | 5 | 6 | 5|5 | |
+|Contigs found | 4 | 5 | 5 | 15 | 17 | 5 | 6 | 5|5 | 4|
 |Longest contig |24,196 |24,196|8055 | 17,251 | 24,196 | 5403 | 8055 | | 5497| |
 |Genes found | 15 | 14 | 11 | 14 | 15 | 15 | 12 |15 |15 | |
 |Non-matching genes | 0| 0 | 0 | 3 (Cladosporium) | 1 (Cladosporium)| 0 | | | 0| |
