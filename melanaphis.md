@@ -48,14 +48,14 @@ Try:
 * I'll also try running mitofinder with spades contigs with only 1 reference (MDON_contig_HPRU): Found 5 contigs. Only found 11 genes--all align to draft mitochondria. 
 * I'll also try running mitofinder with the numt setting--see if that does anything (MDON_numt). Concatenate all the files generated with `cat MDON2_mtDNA_contig_[0-9].fasta MDON2_mtDNA_contig_[0-9][0-9].fasta > all_MDON2_contigs.fasta`. Then run `singularity run mitofinder_v1.4.1.sif --numt -j MDON_numt -a 90day_aphid/melanaphis/MDON2/MDON2_MitoFinder_mitfi_Final_Results -r hemiptera_MSAC.gb -o 5 -p 20 -m 10`: This didn't really seem to work.
 
-| Runs | melanaphis | MDON | MDON_contig_HPRU | MDON2 | MDON_hemipRef_raw |MDON_aphid_ref | MDON_contig_aphididae | MSAC_HPRU | MSAC_HPRU_clc |
-|---|---|---|---|---|---|---|---|---|---|
-|Reference|M.sacchari|H.pruni|H.pruni|703 Hemiptera | 703 Hemiptera | 43 Aphididae | 43 Aphididae | M. sacchari and H. pruni | M. sacchari and H. pruni |
-|Input | Raw fastq | Raw fastq | Contigs from SPAdes | Contigs from SPAdes | Raw Fastq | Raw Fastq | Contigs from SPAdes | Raw reads| Contigs that assembled to CLC |
-|Contigs found | 4 | 5 | 5 | 15 | 17 | 5 | 6 | 5|5 |
-|Longest contig |24,196 |24,196|8055 | 17,251 | 24,196 | 5403 | 8055 | | 5497|
-|Genes found | 15 | 14 | 11 | 14 | 15 | 15 | 12 |15 |15 |
-|Non-matching genes | 0| 0 | 0 | 3 (Cladosporium) | 1 (Cladosporium)| 0 | | | 0|
+| Runs | melanaphis | MDON | MDON_contig_HPRU | MDON2 | MDON_hemipRef_raw |MDON_aphid_ref | MDON_contig_aphididae | MSAC_HPRU | MSAC_HPRU_clc | MSAC_HPRU_metaspades |
+|---|---|---|---|---|---|---|---|---|---|---|
+|Reference|M.sacchari|H.pruni|H.pruni|703 Hemiptera | 703 Hemiptera | 43 Aphididae | 43 Aphididae | M. sacchari and H. pruni | M. sacchari and H. pruni | MSAC and HPRU |
+|Input | Raw fastq | Raw fastq | Contigs from SPAdes | Contigs from SPAdes | Raw Fastq | Raw Fastq | Contigs from SPAdes | Raw reads| Contigs that assembled to CLC | Raw data | 
+|Contigs found | 4 | 5 | 5 | 15 | 17 | 5 | 6 | 5|5 | |
+|Longest contig |24,196 |24,196|8055 | 17,251 | 24,196 | 5403 | 8055 | | 5497| |
+|Genes found | 15 | 14 | 11 | 14 | 15 | 15 | 12 |15 |15 | |
+|Non-matching genes | 0| 0 | 0 | 3 (Cladosporium) | 1 (Cladosporium)| 0 | | | 0| |
 
 The contig that is 24,196 seems to only have a small portion matching mitochondrial reads (COX3)--the rest maps to A. gossypii chromosome 1. 
 
