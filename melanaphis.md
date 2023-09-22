@@ -154,5 +154,5 @@ Output path           =
 ```
 
 ## GetOrganelle
-I'll be using [this example](https://github.com/Kinggerm/GetOrganelle/wiki/Example-4). First install, get into a conda environment `source ~/90day_aphid/conda_env/virt_test/bin/activate` then `module load miniconda`, then use `conda install -c bioconda getorganelle`
-Couldn't install. Gave me error of disk quota exceeded.
+I'll be using [this example](https://github.com/Kinggerm/GetOrganelle/wiki/Example-4). First install, then `module load miniconda`, make a conda environment `conda create --name getorganelle`, `source activate getorganelle`, then use `conda install -c bioconda getorganelle`. Add animal mitochodnria with `get_organelle_config.py -a animal_mt`.
+Ran [getorganelle.sh](scripts/getorganelle.sh).
