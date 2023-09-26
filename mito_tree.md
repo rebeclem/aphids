@@ -29,7 +29,7 @@ CYTB
 mafft --auto --anysymbol ${f} > ${f}_align
 done
 ```
-    * Concatenate the files together into one giant fasta file using `module load phyx` then `pxcat -s *_final.fasta -p partitions.txt -o mito_concat.fasta`
+    * Concatenate the files together into one giant fasta file using `module load phyx` then `pxcat -s *_final.fasta_align -p partitions.txt -o mito_concat.fasta`
     * Make a tree using iqtree. `module load iq_tree`, then `iqtree2 -s mito_concat.fasta -p partitions.txt -nt AUTO -m TESTMERGE -bb 1000 -pre mito_iqtree`
 
 ![mito tree 1](figs/mito_with_2AAUR.png)
