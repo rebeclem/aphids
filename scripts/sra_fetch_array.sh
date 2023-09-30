@@ -26,7 +26,7 @@ taxon=`echo "${line}"|cut -f2`
 #both_singles=$(echo "$leftpair" | sed "s/R1_001_trim.fastq/bothsingles.fastq/g")
 #cat $leftsingle $rightsingle > $both_singles
 echo $sra_id
-#echo $taxon
+echo $taxon
 prefetch -X 9999999999999 $sra_id
 #fastq-dump $sra_id/${sra_id}.sra --threads 6 --split-3 --skip-technical -O $sra_id
 
