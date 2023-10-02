@@ -1,6 +1,6 @@
 # Mitogenome for Melanaphis
 
-There is a new record of *Melanaphis donacis* that we are going to publish the mitochondria for. 
+There is a new record of *Melanaphis donacis* that we are going to publish the mitochondria for. See [slides](https://docs.google.com/presentation/d/1fB6wcH7Kjw6_khCZ0AYpPzKS0llJpJWXhWnbF_noTDA/edit#slide=id.g286a9352028_0_34)
 
 ## Try with [mitofinder](https://github.com/RemiAllio/MitoFinder)
     * On an interactive node, activate environment, load miniconda, and then `conda install mitofinder megahit python=2.7`.
@@ -156,3 +156,7 @@ Output path           =
 ## GetOrganelle
 I'll be using [this example](https://github.com/Kinggerm/GetOrganelle/wiki/Example-4). First install, then `module load miniconda`, make a conda environment `conda create --name getorganelle`, `source activate getorganelle`, then use `conda install -c bioconda getorganelle`. Add animal mitochodnria with `get_organelle_config.py -a animal_mt`.
 Ran [getorganelle.sh](scripts/getorganelle.sh).
+No valid assembly graph found!
+
+## Spades mapped with geneious assembler.
+Worked fine lol. Need to stop.
