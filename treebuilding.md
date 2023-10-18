@@ -60,4 +60,13 @@ For *Aphis*, APHD00272AAUR has a very long branch. This is probably because we a
 * Move the old trees and stuff to a directory calld oldfiles2
 * `while read p; do seqkit grep -rvip "APHD00272AAUR" ${p}_final.fasta > ${p}New_final.fasta; done < Aphis_bigdist.txt` (-r for recursive, -v for inversion/select non matches, -i for ignore case)
 
+## Building a combined tree
+signs are pointing to possible introgression between aphis gossypii and Myzus persicae. That would be wild. To find this out we need to build a combined tree that includes both the aphis and myzus samples. 
+- First, we'll find the orthologs that are shared between aphis and myzus
+- Then I'll make a bunch of gene alignments and trees
+- Then I'll look at the gene trees to see where weird taxa show up (APHD00014, APHD00027, APHD00270)
+- Next, we'll make an astral and ML tree
+- Then, I'll use toytree to make one of those cool tree clouds
+- Then, I'll trim the tree down to a reasonable number of taxa. 
+
 Next: do [snaq](snaq.md)
