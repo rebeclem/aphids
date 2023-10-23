@@ -62,7 +62,12 @@ For *Aphis*, APHD00272AAUR has a very long branch. This is probably because we a
 
 ## Building a combined tree
 signs are pointing to possible introgression between aphis gossypii and Myzus persicae. That would be wild. To find this out we need to build a combined tree that includes both the aphis and myzus samples. 
-- First, we'll find the orthologs that are shared between aphis and myzus
+- First, we'll find the orthologs that are shared between aphis and myzus. We'll use APHD00270ASPlk because it has 8415 instead of 8388 for APHD00014ASPnl. 
+      - First make 2 files with all sequences for APHD00014MORN/APHD00014ASPnl. APHD00014ASPnl.fa:8388, APHD00014MORN.fa:6606, APHD00270ASPlk.fa:8415, APHD00270MVAR.fa:6982. Use this [name change script](scripts/name_change_FNA2.py).
+```
+cat ../aphis/hybpiper/APHD00014ASPnl_aa/*/APHD00014ASPnl_aa/sequences/FNA/OG*.FNA > APHD00014ASPnl.fa
+cat ../myzus/hybpiper/APHD00014MORN_aa/*/APHD00014MORN_aa/sequences/FNA/OG*.FNA > APHD00014MORN.fa
+```
 - Then I'll make a bunch of gene alignments and trees
 - Then I'll look at the gene trees to see where weird taxa show up (APHD00014, APHD00027, APHD00270)
 - Next, we'll make an astral and ML tree
