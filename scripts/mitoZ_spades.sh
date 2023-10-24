@@ -16,10 +16,10 @@ t1=$(date +"%s")
 module load singularityCE
 
 
-singularity run ../MitoZ_v3.6.sif mitoz all  --outprefix MDONspades_insert --thread_number 8 \
+singularity run MitoZ_v3.6.sif mitoz all  --outprefix MDONspades_run10 --thread_number 8 \
 	--clade Arthropoda --genetic_code auto --species_name "Melanaphis donacis" \
-	--fq1 ../clean_data/MDONspades.clean_R1.fq.gz --fq2 ../clean_data/MDONspades.clean_R2.fq.gz --insert_size 267 \
---data_size_for_mt_assembly 0,0 --assembler spades --kmers_spades 41 79 \
+	--fq1 ./clean_data/MDONspades.clean_R1.fq.gz --fq2 ./clean_data/MDONspades.clean_R2.fq.gz --insert_size 267 \
+--data_size_for_mt_assembly 32,0 --assembler spades --kmers_spades 31 79 \
 	--requiring_taxa Arthropoda \
 	--skip_filter 
 #        --slow_search \

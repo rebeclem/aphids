@@ -2,9 +2,9 @@
 #SBATCH -J masurca
 #SBATCH -o masurca_%A_%a.out
 #SBATCH -e masurca_%A_%a.err
-#SBATCH -N 1 
+#SBATCH -N 1 -n 80 
 #SBATCH -t 2-00:00:00
-#SBATCH -p scavenger-mem
+#SBATCH -p mem
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
 
@@ -14,7 +14,9 @@ t1=$(date +"%s")
 
 module load masurca/4.1.0
 
-masurca -i ../APHDOO305_S99_R1_001.fastq.gz,../APHDOO305_S99_R2_001.fastq.gz -t 80  
+masurca ../config2.txt
+ ./assemble.sh
+#masurca -i ../APHDOO305_S99_R1_001.fastq.gz,../APHDOO305_S99_R2_001.fastq.gz -t 80  
 
 #---Complete job
 t2=$(date +"%s")

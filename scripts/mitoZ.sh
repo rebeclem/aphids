@@ -3,7 +3,7 @@
 #SBATCH -o mitoZ.%A_%a.out
 #SBATCH -e mitoZ.%A_%a.err
 #SBATCH -n 20 -N 1
-#SBATCH -p short
+#SBATCH -p scavenger
 #SBATCH -t 2-00:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
@@ -16,7 +16,15 @@ t1=$(date +"%s")
 module load singularityCE
 
 
-singularity run MitoZ_v3.6.sif mitoz all  --outprefix MDON_mitosz --thread_number 4 --clade Arthropoda --genetic_code auto --species_name "Melanaphis donacis" --fq1 ../APHD00305MDON_R1.fastq.gz --fq2 ../APHD00305MDON_R1.fastq.gz --insert_size 139 --data_size_for_mt_assembly 0,0 --assembler megahit --kmers_megahit 43 71 99 --memory 50 --requiring_taxa Arthropoda 
+singularity run MitoZ_v3.6.sif mitoz all  --outprefix MDON_mitoz8 \
+       	--thread_number 8 --clade Arthropoda --genetic_code auto \
+	--species_name "Melanaphis donacis" \
+	--fq1 clean_data/MDONspades.clean_R1.fq.gz --fq2 clean_data/MDONspades.clean_R2.fq.gz \
+	--insert_size 267 \
+	--data_size_for_mt_assembly 16,0  \
+	--assembler megahit --kmers_megahit 43 71 99 \
+	--memory 50 --requiring_taxa Arthropoda \
+	--skip_filter --slow_search
 
 #---Complete job
 t2=$(date +"%s")
