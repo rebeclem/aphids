@@ -68,7 +68,9 @@ signs are pointing to possible introgression between aphis gossypii and Myzus pe
 cat ../aphis/hybpiper/APHD00014ASPnl_aa/*/APHD00014ASPnl_aa/sequences/FNA/OG*.FNA > APHD00014ASPnl.fa
 cat ../myzus/hybpiper/APHD00014MORN_aa/*/APHD00014MORN_aa/sequences/FNA/OG*.FNA > APHD00014MORN.fa
 ```
-    - Next, blast one to the other. `module load blast+` then `blastn -query APHD00270ASPlk.fa -subject APHD00270MVAR.fa -outfmt 6 -evalue 1e-50 -max_target_seqs 1 > blast.txt`
+
+- Next, blast one to the other. `module load blast+` then `blastn -query APHD00270ASPlk.fa -subject APHD00270MVAR.fa -outfmt 6 -evalue 1e-10 -max_target_seqs 1 -max_hsps 1 -perc_identity 99 > blast.txt`. This gives 5589 lines.
+- Use [combine orthologs script](scripts/combine_orthologs.py) to combine the alignments with the matching sequences
 - Then I'll make a bunch of gene alignments and trees
 - Then I'll look at the gene trees to see where weird taxa show up (APHD00014, APHD00027, APHD00270)
 - Next, we'll make an astral and ML tree
