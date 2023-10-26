@@ -71,7 +71,8 @@ cat ../myzus/hybpiper/APHD00014MORN_aa/*/APHD00014MORN_aa/sequences/FNA/OG*.FNA 
 
 - Next, blast one to the other. `module load blast+` then `blastn -query APHD00270ASPlk.fa -subject APHD00270MVAR.fa -outfmt 6 -evalue 1e-10 -max_target_seqs 1 -max_hsps 1 -perc_identity 99 > blast.txt`. This gives 5589 lines.
 - Use [combine orthologs script](scripts/combine_orthologs.py) to combine the alignments with the matching sequences
-- Then I'll make a bunch of gene alignments and trees. Align using [mafft script](scripts/mafft_array.sh). Gene trees using iqtree_getpartitions then. Concatenate using [pxcat](scripts/pxcat.sh).
+- Then I'll make a bunch of gene alignments and trees. Align using [mafft script](scripts/mafft_array.sh). change taxa names using `for f in *align.fasta; do prefix="${f%%_*}"; echo "$prefix"; sed 's/-OG.*//g; s/ //g' $f > "${prefix}_final.fasta"; done`. Concatenate using [pxcat](scripts/pxcat.sh). Then use iqtree_concat_combined.sh to run iqtree.
+- Gene trees using iqtree_getpartitions then `cat OG*treefile > ../trees/combined_gene.tre`.  Remove OG #s with `sed 's/-OG[0-9]*//g; s/ //g' combined_gene.tre > combined_gene2.tre`
 - Then I'll look at the gene trees to see where weird taxa show up (APHD00014, APHD00027, APHD00270)
 - Next, we'll make an astral and ML tree
 - Then do it again after we delete the duplicated ones
