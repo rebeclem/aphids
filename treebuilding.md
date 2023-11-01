@@ -77,6 +77,7 @@ cat ../myzus/hybpiper/APHD00014MORN_aa/*/APHD00014MORN_aa/sequences/FNA/OG*.FNA 
 - Next, we'll make an astral and ML tree
 - Then do it again after we delete the duplicated ones
 - Then, I'll use toytree to make one of those cool tree clouds
-- Then, I'll trim the tree down to a reasonable number of taxa. 
+- Then, I'll trim the tree down to a reasonable number of taxa.
+- good luck
 
 Next: do [snaq](snaq.md)
