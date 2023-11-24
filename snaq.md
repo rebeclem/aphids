@@ -52,3 +52,5 @@ Some of the hybridization events that it identified are not within the groups we
 * Rerun snaq. On an interactive node, load the julia module, then do step 9 above to access the environment. Use steps 3-6 to build your new VCF files. and then follow steps 11-12 to run snaq again.
 
 Let's confirm our results with [bpp.md](bpp.md)
+
+If there's hybridization going on between aphis and myzus, I'd like to [test for hybridization between the two groups](snaq_both.md). 
