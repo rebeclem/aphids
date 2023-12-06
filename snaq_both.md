@@ -7,7 +7,8 @@ In the [SNaQ manuscript](https://journals.plos.org/plosgenetics/article?id=10.13
 3. Make a list of genes. `for f in *_final.fasta; do pref="${f%%_*}"; echo "$pref" >> genelist.txt; done`
 4. Run [iqtree_getpartitions.py](scripts/iqtree_getpartitions.py) to get partition files
 5. Next make a tree from each of them using iqtree_array_AAUR.sh but change the number of arrays to 5589
-6. `cat OG*treefile > ../trees/combined_gene.tre`. Remove OG #s with `sed 's/-OG[0-9]*//g; s/ //g' combined_gene.tre > combined_gene2.tre`
-7. get on an interactive node and load the julia module
-8. 
+6. Make sure you have all the trees: `ls *treefile | wc -l` 
+7. `cat OG*treefile > ../trees/combined_gene.tre`. Remove OG #s with `sed 's/-OG[0-9]*//g; s/ //g' combined_gene.tre > combined_gene2.tre`
+8. get on an interactive node and load the julia module
 9. 
+10. 
