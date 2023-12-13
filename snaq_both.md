@@ -20,7 +20,12 @@ In the [SNaQ manuscript](https://journals.plos.org/plosgenetics/article?id=10.13
 
 
 ## Next, run DSUITE
-* In snp, make a directory called "both". Transfer the Myzus varians references here. Make output files: `mkdir -p sam bam bcf vcf`
+* In snp, make a directory called "both".
+* We should use [this genome](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_001856785.1/) for Aphis gossypii since it's certified and has chromosome level. use wget with the curl, then unzip and the file will be a .fna file.
+* Transfer the Aphis gossypii references here. Make index files on an interactive node (load bwa first) with `bwa index GCF_020184175.1_ASM2018417v2_genomic.fna`. After this, you should see six files in the directory.
+* Make output files: `mkdir -p sam bam bcf vcf`
 * Use globus to transfer the cleaned fastq files to a directory ../cleanedFiles
 * Make a list of sample names called SampNames.txt
 * run [make_vcf_both.sh](scripts/make_vcf_both.sh).
+* Also run [make_vcf_mathers_both.sh](scripts/make_vcf_mathers_both.sh)
+* 
