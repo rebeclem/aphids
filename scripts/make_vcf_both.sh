@@ -20,7 +20,7 @@ module load bwa/0.7.17
 module load samtools/1.17
 module load bcftools/1.16
 
-genome=~/90day_aphid/snp/myzus/Myzus_varians_v1.1.scaffolds.braker.filtered.cds.LTPG.fa
+genome=~/90day_aphid/raw_data/Agossypii/GCF_020184175.1_ASM2018417v2_genomic.fna
 
 fq1=~/90day_aphid/cleanedFiles/${base}*1*fastq.gz
     fq2=~/90day_aphid/cleanedFiles/${base}*2*fastq.gz

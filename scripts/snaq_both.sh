@@ -2,13 +2,14 @@
 #SBATCH -J snaq
 #SBATCH -o snaq_%A_%a.out
 #SBATCH -e snaq_%A_%a.err
-#SBATCH -p long,scavenger
+#SBATCH -p mem,scavenger-mem
 #SBATCH --array=0-10
-#SBATCH -c 31
-# #SBATCH --mem-per-cpu=10
-#SBATCH -t 21-00:00:00
+#SBATCH -N 1
+#SBATCH -n 80
+#SBATCH -t 7-00:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
+
 
 
 #--- Start the timer

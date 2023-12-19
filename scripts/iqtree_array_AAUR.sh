@@ -16,9 +16,9 @@ name1=$(sed -n "$SLURM_ARRAY_TASK_ID"p genelist.txt)
 t1=$(date +"%s")
 
 echo "Starting $name1"
-module load iq_tree/2.0-rc1
+module load iq_tree/2.2.0
 
-iqtree -nt AUTO -s ${name1}New_final.fasta -spp ${name1}_parts.txt -m TESTMERGE -bb 1000 -pre ${name1}_nucs_ml_1000ufbs_NoAAUR 
+iqtree -nt AUTO -s ${name1}_final.fasta -spp ${name1}_parts.txt -m TESTMERGE -bb 1000 -pre ${name1}_nucs_ml_1000ufbs_NoAAUR 
 
 #---Complete job
 t2=$(date +"%s")
