@@ -8,7 +8,7 @@ In the [SNaQ manuscript](https://journals.plos.org/plosgenetics/article?id=10.13
 4. Make a list of genes. `for f in *_final.fasta; do pref="${f%%_*}"; echo "$pref" >> genelist.txt; done`
 5. Run [iqtree_getpartitions.py](scripts/iqtree_getpartitions.py) to get partition files
 6. Next make a tree from each of them using iqtree_array_AAUR.sh but change the number of arrays to 5589
-7. Make sure you have all the trees: `ls *treefile | wc -l` 
+7. Make sure you have all the trees: `ls *treefile | wc -l` . One gene: OG0010256 has all identical sites. 
 8. `cat OG*treefile > ../trees/combined_gene.tre`. Remove OG #s with `sed 's/-OG[0-9]*//g; s/ //g' combined_gene.tre > combined_gene2.tre`
 9. Run [astral](scripts/astral_both.sh)
 10. get on an interactive node and load the julia module, press "]" to load packages, `activate "/project/aphid_phylogenomics/becca/.julia/project0"`, `add PhyloNetworks`, `add CSV`, `add DataFrames`
