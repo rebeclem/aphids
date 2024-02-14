@@ -24,3 +24,7 @@ Here, we are looking at introgression and hybridization in two genera of aphids:
 5) Time the tree
 6) Find synteny
 
+
+# Other things
+* Analysis for mitochondrial genome assembly of [Melanaphis](Melanaphis.md)
+* Trying to understand aphis/myzus [possible hybrids](possibleHybrids.md)
