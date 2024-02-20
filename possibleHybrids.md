@@ -106,6 +106,20 @@ The output for Mascalonius_APHD00027:
 38          Mfataunae_APHD00302      4  0.080412
 34  Mcerasi_LIB12394_ERR2236144      1  0.134857
 ```
+Similar results with all 5589 gene trees:
+```                   closest_taxon  count  distance
+7                    APHD00016DFOE    461  0.137000
+18                   APHD00101ANER    257  0.025800
+2                             AGOS    228  0.021802
+31                   APHD00301HPRU    225  0.140900
+8                    APHD00022MORN    215  0.108411
+48       other_AGOS_hic_ERR6928994    204  0.034536
+47     other_AGOS_Hap3_SRR14552459    174  0.027741
+30                   APHD00278ASED    166  0.096081
+46     other_AGOS_Hap1_SRR14552454    157  0.031162
+26                   APHD00259AAFF    120  0.036913
+25                    APHD00232ASP    117  0.089178
+```
 The output for Mvarians_APHD00270:
 ```
  closest_taxon  count  distance
@@ -126,16 +140,14 @@ The output for Mvarians_APHD00270:
 21    Mpersicae_G006_SRR3466613     14  0.069265
 17          Mfataunae_APHD00302     14  0.061950
 22    Mpersicae_LIB_SRR13326386     13  0.066608
-13  Mcerasi_LIB12394_ERR2236144      9  0.068759
-0        Acornifoliae_APHD00265      2  0.073227
-11             Hpruni_APHD00301      2  0.061925
-6               Asedi_APHD00278      2  0.067867
-16           Mdonacis_APHD00305      1  0.012507
-1             Aglycines_Mathers      1  0.333888
-5             Agossypii_Mathers      1  0.076312
-24          Msacchari_APHD00223      1  0.201251
-4           Agossypii_APHD00079      1  0.040720
-3      Aglycines_bt4_SRR3190086      1  0.127734
-2     Aglycines_bt1_SRR10158900      1  0.109505
-28    other_AGOS_hic_ERR6928994      1  0.070923
+```
+When I do it with all 5589 gene trees, I get similar results:
+```7                    APHD00016DFOE   1764  0.081219
+8                    APHD00022MORN    909  0.080085
+13                   APHD00071MCER    380  0.089831
+17                   APHD00093BHEL    353  0.077870
+29                   APHD00276BAMY    323  0.077923
+39                            MVAR    305  0.089510
+11                    APHD00036DSP    232  0.093993
+21                   APHD00144MVAR    184  0.082418
 ```
