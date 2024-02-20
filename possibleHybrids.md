@@ -19,11 +19,13 @@ I'm not sure where these files are right now, so instead I'm going to look at th
 Thomas mentioned something about concordance factors. 
 
 Chris helped me write this script, which tests for the nearest neighbors. It returns a table of how many times each taxa was found as the closest taxon, sorted by count. It also give the average distance.
+
+There are 1605 trees. Originally there were 5588 trees from the genes shared by aphis and myzus, 2166 of these had at least 54 tips (out of 57). After removing trees where 27,14 and 270 weren't sister to each other, there were 1605. Why would they not be sister to eachother? BC there's 2 different genes?
 ```
 # Code from Chris
 wanted_taxa = ['Mvarians_APHD00270', 'Mascalonius_APHD00027']
 list27 = [] # make an empty list
-with open("aphid_5589trees.tre") as f:
+with open("aphid_1605trees.tre") as f:
     for line in f:#loop through each tree (1phylo/line)
         phylo = Tree(line.rstrip())#read into ete
         # First check if the two taxa are in the tree
