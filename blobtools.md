@@ -7,6 +7,8 @@ I am also hoping I can use blobtools to see if there has been some contamination
 To do this:
 * First we need assemblies. Thomas Mathers recommended I do this with [discovar](https://github.com/broadinstitute/discovar_de_novo). He says this works well with aphids and illumina short reads.
 * First I will transfer the raw reads over to ATLAS on GLOBUS bc CERES is down. I'll transfer first 272, 27, and 270, although I'm curious about doing it with all of them. I will also transfer Phorodons and another outgroup.
+* Next I need the DiscovarDenovo files. I downloaded to my computer than copied to atlas with `rsync -avh discovardenovo-52488 rebecca.clement@atlas-login.hpc.msstate.edu:/home/rebecca.clement/90day`. I used `./configure` to install (following the instructions in the INSTALL doc).
+* I'm running into problems with installing.
 
 ```
 DiscovarDeNovo READS=M_lig_095_R1_val_1.fq,M_lig_095_R2_val_2.fq OUT_DIR=. NUM_THREADS=32 MAX_MEM_GB=100
