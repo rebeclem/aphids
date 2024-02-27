@@ -7,8 +7,10 @@ I am also hoping I can use blobtools to see if there has been some contamination
 To do this:
 * First we need assemblies. Thomas Mathers recommended I do this with [discovar](https://github.com/broadinstitute/discovar_de_novo). He says this works well with aphids and illumina short reads.
 * First I will transfer the raw reads over to CERES is down. I'll transfer first 272, 27, and 270, although I'm curious about doing it with all of them. I will also transfer Phorodons and another outgroup.
-* I'll use the discovar module on CERES.
-* DISCOVAR should be run on raw reads, without any filtering. 
+* I need to download the [DiscovarDenovo using conda](https://bioconda.github.io/recipes/discovar-denovo/README.html). On an interactive node, do `module load miniconda`, activate a conda environment `conda activate /project/aphid_phylogenomics/yelena/yelenaConda/` (It kept giving me an error that I don't have write permissions in this environment, so I got yelena to create it. Hopefully this works). Then use the command: `mamba install discovardenovo`. Mamba is a faster version of conda that is usually better at resolving packages. 
+* DISCOVARdenovo should be run on raw reads, without any filtering.
+* I think the files need to be unzipped
+* Make a file called namelist.txt that has the prefixes we want to do. 
 
 ```
 DiscovarDeNovo READS=M_lig_095_R1_val_1.fq,M_lig_095_R2_val_2.fq OUT_DIR=. NUM_THREADS=32 MAX_MEM_GB=100
