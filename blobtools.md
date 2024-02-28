@@ -7,10 +7,14 @@ I am also hoping I can use blobtools to see if there has been some contamination
 To do this:
 * First we need assemblies. Thomas Mathers recommended I do this with [discovar](https://github.com/broadinstitute/discovar_de_novo). He says this works well with aphids and illumina short reads.
 * First I will transfer the raw reads over to CERES is down. I'll transfer first 272, 27, and 270, although I'm curious about doing it with all of them. I will also transfer Phorodons and another outgroup.
-* I need to download the [DiscovarDenovo using conda](https://bioconda.github.io/recipes/discovar-denovo/README.html). On an interactive node, do `module load miniconda`, activate a conda environment `conda activate /project/aphid_phylogenomics/yelena/yelenaConda/` (It kept giving me an error that I don't have write permissions in this environment, so I got yelena to create it. Hopefully this works). Then use the command: `mamba install discovardenovo`. Mamba is a faster version of conda that is usually better at resolving packages. 
+* I need to download the [DiscovarDenovo using conda](https://bioconda.github.io/recipes/discovar-denovo/README.html). On an interactive node, do `module load miniconda`, activate a conda environment `source activate /project/aphid_phylogenomics/yelena/yelenaConda/` (It kept giving me an error that I don't have write permissions in this environment, so I got yelena to create it. Hopefully this works. It worked on atlas when I did `conda create --name discovarenv discovardenovo`). Then use the command: `mamba install discovardenovo`. Mamba is a faster version of conda that is usually better at resolving packages. 
 * DISCOVARdenovo should be run on raw reads, without any filtering.
 * I think the files need to be unzipped
 * Make a file called namelist.txt that has the prefixes we want to do. `for f in *R1*.gz; do fprefix=${f%%_*}; echo $fprefix; done > namelist.txt`
+* I ran the assembly via this [slurm script](scripts/discovar_atlas.sh) on Atlas. Each of these took between 80 and 260 minutes.
+* How many reads per fastq file? `for file in *.fastq; do echo $file; echo $(cat $file|wc -l)/4|bc; done.` This info is also in the output files.
+* Assembly stats: `for d in APHD*/; do echo $d; cat $d/a.final/stats; done >allstats.txt`
+* Move all the discovar things to a separate directory
 
 ```
 DiscovarDeNovo READS=M_lig_095_R1_val_1.fq,M_lig_095_R2_val_2.fq OUT_DIR=. NUM_THREADS=32 MAX_MEM_GB=100
