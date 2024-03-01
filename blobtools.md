@@ -12,12 +12,14 @@ To do this:
 * I think the files need to be unzipped
 * Make a file called namelist.txt that has the prefixes we want to do. `for f in *R1*.gz; do fprefix=${f%%_*}; echo $fprefix; done > namelist.txt`
 * I ran the assembly via this [slurm script](scripts/discovar_atlas.sh) on Atlas. Each of these took between 80 and 260 minutes.
+   * From Thomas: `DiscovarDeNovo READS=M_lig_095_R1_val_1.fq,M_lig_095_R2_val_2.fq OUT_DIR=. NUM_THREADS=32 MAX_MEM_GB=100`
 * How many reads per fastq file? `for file in *.fastq; do echo $file; echo $(cat $file|wc -l)/4|bc; done.` This info is also in the output files.
 * Assembly stats: `for d in APHD*/; do echo $d; cat $d/a.final/stats; done >allstats.txt`
 * Move all the discovar things to a separate directory
+* I got errors doing the blastn step to get taxonomy. I'll try installing my own blast through conda. Load miniconda, then `source activate discovarenv`. This didn't work: transfering files back over to ceres. 
 
 ```
-DiscovarDeNovo READS=M_lig_095_R1_val_1.fq,M_lig_095_R2_val_2.fq OUT_DIR=. NUM_THREADS=32 MAX_MEM_GB=100
+
 
 ### Generate blob plot of assembly (scaffs > 1Kb).
 ## Alternative run with megablast - can’t use diamond blast results as it does not output taxonomy. 
