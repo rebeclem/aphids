@@ -17,8 +17,9 @@ To do this:
 * Assembly stats: `for d in APHD*/; do echo $d; cat $d/a.final/stats; done >allstats.txt`
 * Move all the discovar things to a separate directory
 * I got errors doing the blastn step to get taxonomy. I'll try installing my own blast through conda. Load miniconda, then `source activate discovarenv`. This didn't work: transfering files back over to ceres.
-* On Ceres, run [blobblast.sh](scripts/blobblast.sh). This should generate a bunch of files that end in megablast_nt
-* Activate discovarenv. Install blobtools with `conda install bioconda::blobtools`
+* On Ceres, run [blobblast.sh](scripts/blobblast.sh). This should generate a bunch of files that end in megablast_nt. This took about 1279 minutes on average (21 hours). 
+* Activate discovarenv. Install blobtools with `conda install bioconda::blobtools`.
+* Run [blobdb.sh](scripts/blobdb.sh). This is giving me errors saying it requires --names, --nodes or --db. I think something is wrong. Maybe it's my coverage file?
 
 ```
 
