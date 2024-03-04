@@ -16,7 +16,9 @@ To do this:
 * How many reads per fastq file? `for file in *.fastq; do echo $file; echo $(cat $file|wc -l)/4|bc; done.` This info is also in the output files.
 * Assembly stats: `for d in APHD*/; do echo $d; cat $d/a.final/stats; done >allstats.txt`
 * Move all the discovar things to a separate directory
-* I got errors doing the blastn step to get taxonomy. I'll try installing my own blast through conda. Load miniconda, then `source activate discovarenv`. This didn't work: transfering files back over to ceres. 
+* I got errors doing the blastn step to get taxonomy. I'll try installing my own blast through conda. Load miniconda, then `source activate discovarenv`. This didn't work: transfering files back over to ceres.
+* On Ceres, run [blobblast.sh](scripts/blobblast.sh). This should generate a bunch of files that end in megablast_nt
+* Activate discovarenv. Install blobtools with `conda install bioconda::blobtools`
 
 ```
 
