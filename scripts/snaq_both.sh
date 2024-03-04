@@ -6,7 +6,7 @@
 #SBATCH --array=0-10
 #SBATCH -N 1
 #SBATCH -n 80
-#SBATCH -t 7-00:00:00
+#SBATCH -t 21-00:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
 

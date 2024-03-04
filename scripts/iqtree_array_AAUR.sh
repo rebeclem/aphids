@@ -2,7 +2,7 @@
 #SBATCH -J iqtree_array
 #SBATCH -o iq_array_%A_%a.out
 #SBATCH -e iq_array_%A_%a.err
-#SBATCH --array=1-8631%500
+#SBATCH --array=1-5589%500
 #SBATCH -N 1 -n 4
 #SBATCH -t 30:00
 #SBATCH -p short,debug,brief-low
@@ -18,7 +18,7 @@ t1=$(date +"%s")
 echo "Starting $name1"
 module load iq_tree/2.2.0
 
-iqtree -nt AUTO -s ${name1}_final.fasta -spp ${name1}_parts.txt -m TESTMERGE -bb 1000 -pre ${name1}_nucs_ml_1000ufbs_NoAAUR 
+iqtree2 -nt AUTO -s ${name1}_final.fasta -spp ${name1}_parts.txt -m TESTMERGE -bb 1000 -pre ${name1}_nucs_ml_1000ufbs_NoAAUR 
 
 #---Complete job
 t2=$(date +"%s")
