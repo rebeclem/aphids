@@ -16,14 +16,19 @@ To do this:
 * How many reads per fastq file? `for file in *.fastq; do echo $file; echo $(cat $file|wc -l)/4|bc; done.` This info is also in the output files.
 * Assembly stats: `for d in APHD*/; do echo $d; cat $d/a.final/stats; done >allstats.txt`
 * Move all the discovar things to a separate directory
+* Copy the fragment size files to computer to look at them. First make a directory called fragsdist, then run `for f in APHD*/frags.dist.png; do echo $f; newf=${f%%/*}; cp $f fragsdist/${newf}.png; done`, then copy to computer.
 * I got errors doing the blastn step to get taxonomy. I'll try installing my own blast through conda. Load miniconda, then `source activate discovarenv`. This didn't work: transfering files back over to ceres.
 * On Ceres, run [blobblast.sh](scripts/blobblast.sh). This should generate a bunch of files that end in megablast_nt. This took about 1279 minutes on average (21 hours). 
 * Activate discovarenv. Install blobtools with `conda install bioconda::blobtools`.
 * Run [blobdb.sh](scripts/blobdb.sh). This is giving me errors saying it requires --names, --nodes or --db. I think something is wrong. Maybe it's my coverage file?
+*I'll use bowtie2 to map sequences back to mapping files. [bowtie2.sh](scripts/bowtie2.sh)
+
+### Assemblies with masurca
+* I'm going to also try making assemblies with masurca and see how it compares.
+* First make a directory called masurca. It doesn't like how I'm using wildcards, so I'm going to make files with full lists of file addresses. `ls /90daydata/aphid_phylogenomics/becca/raw_data/shotgunseqs/*R1*fastq.gz >namelistf.txt`
+* Running
 
 ```
-
-
 ### Generate blob plot of assembly (scaffs > 1Kb).
 ## Alternative run with megablast - can’t use diamond blast results as it does not output taxonomy. 
 [matherst@TGAC-HPC kat_unfiltered_assembly]$ submit-slurm_v1.1.pl -q tgac-long -m 16000 -c 16 -t 3-00:00 -e -j M_var_vs_nt_megablast -i "source blast-2.2.31;blastn -task megablast -query a.lines.min_1kb.fasta -db /tgac/references/databases/blast/nt_28022016/nt -outfmt '6 qseqid staxids bitscore std sscinames sskingdoms stitle' -culling_limit 5 -num_threads 16 -evalue 1e-25 -out a.lines.min_1kb.megablast_nt"
