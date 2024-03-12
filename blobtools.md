@@ -28,6 +28,10 @@ To do this:
 * First make a directory called masurca. It doesn't like how I'm using wildcards, so I'm going to make files with full lists of file addresses. `ls /90daydata/aphid_phylogenomics/becca/raw_data/shotgunseqs/*R1*fastq.gz >namelistf.txt`
 * Running
 
+### Assemblies with Spades
+* Only 23/34 of samples worked. APHD00027 didn't finish. Neither did APHD00041. 41 finished abnormally with OS return value 255 (cannot allocate memory-it used 108G). 27 finished also out of memory--it had 73G at the end. I'll try running these two again. Are they the biggest? 41 isn't. I allocated more memory then started those two samples again.
+* Quantify these using [contig_stats.pl](https://github.com/KorfLab/Perl_utils/blob/master/contig_stats.pl). On an interactive node, load the perl module, then do `for f in APHD*/contigs.fasta; do echo $f >> contig_stats.txt; perl ../scripts/contig_stats.pl $f >> contig_stats.txt; done`
+
 ```
 ### Generate blob plot of assembly (scaffs > 1Kb).
 ## Alternative run with megablast - can’t use diamond blast results as it does not output taxonomy. 
