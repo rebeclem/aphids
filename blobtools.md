@@ -31,6 +31,8 @@ To do this:
 ### Assemblies with Spades
 * Only 23/34 of samples worked. APHD00027 didn't finish. Neither did APHD00041. 41 finished abnormally with OS return value 255 (cannot allocate memory-it used 108G). 27 finished also out of memory--it had 73G at the end. I'll try running these two again. Are they the biggest? 41 isn't. I allocated more memory then started those two samples again.
 * Quantify these using [contig_stats.pl](https://github.com/KorfLab/Perl_utils/blob/master/contig_stats.pl). On an interactive node, load the perl module, then do `for f in APHD*/contigs.fasta; do echo $f >> contig_stats.txt; perl ../scripts/contig_stats.pl $f >> contig_stats.txt; done`
+* Then use [contig_table.py](scripts/contig_table.py) to convert text file to tab separated output. [Here's](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1651959159) the results.
+* 
 
 ```
 ### Generate blob plot of assembly (scaffs > 1Kb).
