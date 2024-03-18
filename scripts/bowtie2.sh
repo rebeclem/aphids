@@ -28,7 +28,7 @@ bowtie2 -p 8 -x $name1/a.final/a.lines.fasta -1 $filef -2 $filer -S $name1.map.s
 
 #convert to bam format
 samtools view -bt $name1/a.final/a.lines.fasta.fai $name1.map.sam > $name1.map.bam
-samtools sort $name1.map.bam $name1.map.sorted
+samtools sort $name1.map.bam -o $name1.map.sorted.bam
 samtools index $name1.map.sorted.bam
 
 
