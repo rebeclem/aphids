@@ -26,13 +26,21 @@ To do this:
 ### Assemblies with masurca
 * I'm going to also try making assemblies with masurca and see how it compares.
 * First make a directory called masurca. It doesn't like how I'm using wildcards, so I'm going to make files with full lists of file addresses. `ls /90daydata/aphid_phylogenomics/becca/raw_data/shotgunseqs/*R1*fastq.gz >namelistf.txt`
-* Running
+* worked
+* Use the [assemblathon script](https://github.com/ISUGIFsingularity/utilities/blob/master/utilities/new_Assemblathon.pl) to calculate some statistics. First do `module load perl`. Then do: `perl new_Assemblathon.pl final.genome.scf.fasta`. Use the [masurca_stats.sh](scripts/masurca_stats.sh) file.
+* Use `python ~/scripts/contig_table_assemblathon.py` to combine separate assemblathon stats things into one csv file.
 
 ### Assemblies with Spades
 * Only 23/34 of samples worked. APHD00027 didn't finish. Neither did APHD00041. 41 finished abnormally with OS return value 255 (cannot allocate memory-it used 108G). 27 finished also out of memory--it had 73G at the end. I'll try running these two again. Are they the biggest? 41 isn't. I allocated more memory then started those two samples again.
 * Quantify these using [contig_stats.pl](https://github.com/KorfLab/Perl_utils/blob/master/contig_stats.pl). On an interactive node, load the perl module, then do `for f in APHD*/contigs.fasta; do echo $f >> contig_stats.txt; perl ../scripts/contig_stats.pl $f >> contig_stats.txt; done`
 * Then use [contig_table.py](scripts/contig_table.py) to convert text file to tab separated output. [Here's](https://docs.google.com/spreadsheets/d/1lA_A7v1McQYVXbxUdtAB53EJPoQIcvBhJ5BX2rukXvc/edit#gid=1651959159) the results.
-* 
+* Load miniconda. Then combine the files into a single csv file using [contig_table_assemblathon.py](scripts/contig_table_assemblathon.py) `python contig_table_assemblathon.py`.
+
+
+## Comparing assemblies
+I used R to compare the [assembly stats](scripts/comparing_assemblies.r). Masurca seemed to have the best assemblies (longest contigs, highest N50 length). So we'll continue with those assemblies.
+
+![image](figs/n_contigs_avgContigSize.png)
 
 ```
 ### Generate blob plot of assembly (scaffs > 1Kb).
