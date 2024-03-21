@@ -43,7 +43,8 @@ I used R to compare the [assembly stats](scripts/comparing_assemblies.r). Masurc
 ![image](figs/n_contigs_avgContigSize.png)
 
 * Next, I'm running [blobtax.sh](scripts/blobtax.sh) to blast and get the taxonomy.
-* Then I'm using minimap2 with [blobcov.sh](scripts/blobcov.sh) to get the coverage for the scaffolds.
+* Then I'm using minimap2 with [blobcov.sh](scripts/blobcov.sh) to get the coverage for the scaffolds. This step took between 40 and 352 minutes and resulted in bam files.
+* 
 
 ```
 ### Generate blob plot of assembly (scaffs > 1Kb).
