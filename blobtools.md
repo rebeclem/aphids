@@ -46,6 +46,7 @@ I used R to compare the [assembly stats](scripts/comparing_assemblies.r). Masurc
 * Then I'm using minimap2 with [blobcov.sh](scripts/blobcov.sh) to get the coverage for the scaffolds. This step took between 40 and 352 minutes and resulted in bam files.
 * I installed with [these instructions](https://blobtoolkit.genomehubs.org/blobtools2/blobtools2-tutorials/getting-started-with-blobtools2/) using conda. `conda create -n blobtools2 -y python=3.6 docopt pyyaml ujson pysam tqdm nodejs seqtk` then `source activate blobtools2`
 * I couldn't get it to actually run so I used the module on ceres and `blobtools add --create newdir --fasta blobtools2/examples/assembly.fasta --cov blobtools2/examples/assembly.reads.bam --hits blobtools2/examples/blast.out`
+* Use [blobdb.sh](scripts/blobdb.sh) to run. This takes only a few minutes and generates 5 .json files. 
 
 ```
 ### Generate blob plot of assembly (scaffs > 1Kb).
