@@ -2,12 +2,12 @@
 #SBATCH -J blob_array
 #SBATCH -o blob_%A_%a.out
 #SBATCH -e blob_%A_%a.err
-#SBATCH -N 1 -n 20
+#SBATCH -N 1 -n 10
 #SBATCH -t 1:00:00
-#SBATCH -p debug
+#SBATCH -p debug,mem-low,brief-low
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=rebeclem@gmail.com
-#SBATCH --array=1-34
+#SBATCH --array=1-36
 
 name1=$(sed -n "$SLURM_ARRAY_TASK_ID"p namelist.txt)
 
@@ -16,9 +16,10 @@ t1=$(date +"%s")
 
 echo "Starting $name1"
 #module load blast+/2.13.0
-module load samtools/1.17
-module load miniconda
-source activate discovarenv
+#module load samtools/1.17
+#module load miniconda
+#source activate discovarenv
+module load blobtools/4.3.6
 
 #blastparams="6 qseqid staxids bitscore std sscinames sskingdoms stitle"
 
@@ -26,18 +27,32 @@ source activate discovarenv
 #culling limit sets the number of hits returned per subject sequence
 
 # Generate blobdb
-blobtools create -i $name1/a.final/a.lines.fasta -c $name1/a.final/a.covs -t ${name1}_a.lines.megablast_nt -o ${name1}_megablast_nt
+blobtools create --fasta /90daydata/aphid_phylogenomics/becca/masurca/masurca_assemblies/${name1}_primary.genome.scf.fasta.gz $name1
+
+# add coverage
+blobtools add --cov ../masurca/coverage/${name1}_masurca.bam $name1
+
+# add taxonomic info
+blobtools add --hits ../masurca/megablast/${name1}_masurca.megablast_nt --taxrule bestsumorder --taxdump ./taxdump $name1
+
+# plot
+blobtools view --plot $name1
+# snail plot
+blobtools view --plot --view snail  $name1
+# plot colored at a different rank
+
+
 # This command takes in the fasta from discovar and a coverage file and the --hits file from blast and outputs something as the prefix
 
 # Make output tables at genus, order and phylum level
-blobtools view -i ${name1}_megablast_nt.blobDB.json -r genus -o genus
-blobtools view -i ${name1}_megablast_nt.blobDB.json -r order -o order
-blobtools view -i ${name1}_megablast_nt.blobDB.json -r phylum -o phylum
+#blobtools view -i ${name1}_masurca.megablast_nt.blobDB.json -r genus -o genus
+#blobtools view -i ${name1}_masurca.megablast_nt.blobDB.json -r order -o order
+#blobtools view -i ${name1}_masurca.megablast_nt.blobDB.json -r phylum -o phylum
 
 #Make blob plots at genus, order and phylum level
-blobtools blobplot -i ${name1}_megablast_nt.blobDB.json --format pdf -r genus -o genus
-blobtools blobplot -i ${name1}_megablast_nt.blobDB.json --format pdf -r order -o order
-blobtools blobplot -i ${name1}_megablast_nt.blobDB.json --format pdf -r phylum -o phylum
+#blobtools blobplot -i ${name1}_masurca.megablast_nt.blobDB.json --format pdf -r genus -o genus
+#blobtools blobplot -i ${name1}_masurca.megablast_nt.blobDB.json --format pdf -r order -o order
+#blobtools blobplot -i ${name1}_masurca.megablast_nt.blobDB.json --format pdf -r phylum -o phylum
 
 #---Complete job
 t2=$(date +"%s")
