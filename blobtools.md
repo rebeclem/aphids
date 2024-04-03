@@ -46,10 +46,12 @@ I used R to compare the [assembly stats](scripts/comparing_assemblies.r). Masurc
 * Then I'm using minimap2 with [blobcov.sh](scripts/blobcov.sh) to get the coverage for the scaffolds. This step took between 40 and 352 minutes and resulted in bam files.
 * I installed with [these instructions](https://blobtoolkit.genomehubs.org/blobtools2/blobtools2-tutorials/getting-started-with-blobtools2/) using conda. `conda create -n blobtools2 -y python=3.6 docopt pyyaml ujson pysam tqdm nodejs seqtk` then `source activate blobtools2`
 * I couldn't get it to actually run so I used the module on ceres and `blobtools add --create newdir --fasta blobtools2/examples/assembly.fasta --cov blobtools2/examples/assembly.reads.bam --hits blobtools2/examples/blast.out`
-* Use [blobdb.sh](scripts/blobdb.sh) to run. This takes only a few minutes and generates 5 .json files.
+* You have to create first. Make sure you have the taxdump downloaded `curl -L ftp://ftp.ncbi.nih.gov/pub/taxonomy/new_taxdump/new_taxdump.tar.gz | tar xzf -`.
+* Use [blobdb.sh](scripts/blobdb.sh) to run. This takes only a few minutes and generates 5 .json files. Make sure it makes the meta.json file. You need this.
+* It also makes some .png files
+* Now, transfer the files to your local desktop, install blobtoolkit
 * Th PDF files didn't work so I'm going to try following [this tutorial](https://bga23.org/btk-cli/materials/#details) for installation. I installed micromamba, then did `micromamba create -n btk -c conda-forge python=3.9 -y` then used `micromamba activate btk` then `pip install "blobtoolkit[full]"`
-* Then to host I use `blobtools host --api-port 8001 --port 8002 /Users/rebeccaclement/Documents/aphis_myzus_hybridization/blobtools`. This doesn't work. I'm not sure why.
-
+* Then to host I use `blobtools host ~/Documents/aphis_myzus_hybridization/blobtools/APHD00002` to view it in the interactive browser!
 ```
 ### Generate blob plot of assembly (scaffs > 1Kb).
 ## Alternative run with megablast - can’t use diamond blast results as it does not output taxonomy. 
