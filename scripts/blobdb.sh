@@ -40,7 +40,7 @@ blobtools view --plot $name1
 # snail plot
 blobtools view --plot --view snail  $name1
 # plot colored at a different rank
-
+blobtools view --plot --param catField=bestsumorder_genus $name1
 
 # This command takes in the fasta from discovar and a coverage file and the --hits file from blast and outputs something as the prefix
 
