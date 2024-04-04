@@ -40,7 +40,7 @@ blobtools view --plot $name1
 # snail plot
 blobtools view --plot --view snail  $name1
 # plot colored at a different rank
-blobtools view --plot --param catField=bestsumorder_genus $name1
+blobtools view --plot --param catField=bestsumorder_genus $name1 --out $name1 # this outputs the genus level one into the individual folder.
 
 # This command takes in the fasta from discovar and a coverage file and the --hits file from blast and outputs something as the prefix
 
