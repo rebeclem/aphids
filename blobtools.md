@@ -52,6 +52,20 @@ I used R to compare the [assembly stats](scripts/comparing_assemblies.r). Masurc
 * Now, transfer the files to your local desktop, install blobtoolkit
 * Th PDF files didn't work so I'm going to try following [this tutorial](https://bga23.org/btk-cli/materials/#details) for installation. I installed micromamba, then did `micromamba create -n btk -c conda-forge python=3.9 -y` then used `micromamba activate btk` then `pip install "blobtoolkit[full]"`
 * Then to host I use `blobtools host ~/Documents/aphis_myzus_hybridization/blobtools/APHD00002` to view it in the interactive browser!
+* 
+
+Here's a sample that has contamination:
+![image](figs/APHDOO272.blob.circle.png)
+
+and the two that are questionable:
+![image](figs/APHDOO270.blob.circle.png)
+
+![image](figs/APHD00027.blob.circle.png)
+
+
+* Finally, I'd like to filter out any fasta sequences that map to hymenoptera or have coverage higher than expected. [Here's](https://blobtoolkit.genomehubs.org/blobtools2/blobtools2-tutorials/filtering-a-dataset/) some instructions.
+
+Scripts from Thomas Mathers:
 ```
 ### Generate blob plot of assembly (scaffs > 1Kb).
 ## Alternative run with megablast - can’t use diamond blast results as it does not output taxonomy. 
