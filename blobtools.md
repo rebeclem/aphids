@@ -63,7 +63,8 @@ and the two that are questionable:
 ![image](figs/APHD00027.blob.circle.png)
 
 
-* Finally, I'd like to filter out any fasta sequences that map to hymenoptera or have coverage higher than expected. [Here's](https://blobtoolkit.genomehubs.org/blobtools2/blobtools2-tutorials/filtering-a-dataset/) some instructions.
+* Finally, I'd like to filter out any fasta sequences that map to hymenoptera or have coverage higher than expected. [Here's](https://blobtoolkit.genomehubs.org/blobtools2/blobtools2-tutorials/filtering-a-dataset/) some instructions. On an interactive node, I loaded the blobtools module then did `blobtools filter --param bestsumorder_order--Keys=Hymenoptera --fasta ~/90day_aphid/masurca/masurca_assemblies/APHDOO272_primary.genome.scf.fasta.gz --summary STDOUT APHDOO272`. This gives me the contigs/scaffolds. I wonder if I need to also get the raw reads or if I can just feed this into hybpiper
+* I'm also going to try to make phylogenies without 27 and 270 to see if it makes a difference. 
 
 Scripts from Thomas Mathers:
 ```
