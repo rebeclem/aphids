@@ -116,5 +116,6 @@ When I do it with all 5589 gene trees, I get similar results:
 11                    APHD00036DSP    232  0.093993
 21                   APHD00144MVAR    184  0.082418
 ```
+Now I want to make phylogenies without 27 or 270. And try to pull out the mitochondria from all.
 
 Next: Trying with [blobtools](blobtools.md).
