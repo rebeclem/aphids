@@ -43,6 +43,6 @@ Now the tree looks like:
 
 After I did blobtools, I had the assemblies from masurca. Now I will use mitofinder to pull out the mitochondrial sequences.
 
-* First I'll download some mitochondrial genomes from genbank. I'll download the genbank files for [A. gossypii](https://www.ncbi.nlm.nih.gov/nuccore/NC_024581.1), [A. aurantii]([https://www.ncbi.nlm.nih.gov/nuccore/NC_024581.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_052865.1)), and [M. persicae](https://www.ncbi.nlm.nih.gov/nuccore/NC_029727.1) and upload to mitofinder folder in mito directory on ceres.
+* First I'll download some mitochondrial genomes from genbank. I'll download the genbank files for [A. gossypii](https://www.ncbi.nlm.nih.gov/nuccore/NC_024581.1), [A. aurantii](https://www.ncbi.nlm.nih.gov/nuccore/NC_052865.1), and [M. persicae](https://www.ncbi.nlm.nih.gov/nuccore/NC_029727.1) and upload to mitofinder folder in mito directory on ceres.
 * Note: The installation I did before with singularity wasn't working so I decided to use atlas instead. It worked fine. Moving my scripts there to continue. Used [this](scripts/mitofinder_array.sh) script.
-* 
+* When I did it with the contigs from masurca, it wasn't high quality. let me try with metaspades. not sure if it's any better.
