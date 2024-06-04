@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH -J bothVCF_array
+#SBATCH -J myzusbothVCF_array
 #SBATCH -o variant_%A_%a.out
 #SBATCH -e variant_%A_%a.err
-#SBATCH --array=1-32
+#SBATCH --array=1-11
 #SBATCH -N 1 -n 4
 #SBATCH -t 2-00:00:00
 #SBATCH -p short,mem-low,scavenger,scavenger-mem
@@ -20,7 +20,7 @@ module load bwa/0.7.17
 module load samtools/1.17
 module load bcftools/1.16
 
-genome=Aphis_gossypii_1033E_v1.scaffolds.braker.cds.LTPG.fa
+genome=Phorodon_humuli_v2_scaffolds.braker.filtered.cds.LTPG.fa
 
 fq1=~/90day_aphid/raw_data/aphid_shotgun_sequencing_trimmed/${base}*1.fastq.gz
     fq2=~/90day_aphid/raw_data/aphid_shotgun_sequencing_trimmed/${base}*2.fastq.gz

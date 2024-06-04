@@ -6,12 +6,13 @@
 #SBATCH -t 2-00:00:00
 #SBATCH -p mem
 #SBATCH --mail-type=ALL
+#SBATCH --array=1-5
 #SBATCH --mail-user=rebeclem@gmail.com
 
 # #SBATCH --mem-per-cpu=3000
 
-#base=$(sed -n "$SLURM_ARRAY_TASK_ID"p SampOther.txt)
-
+base=$(sed -n "$SLURM_ARRAY_TASK_ID"p SampMather.txt)
+bamname=$(sed -n "$SLURM_ARRAY_TASK_ID"p SampMather_out.txt)
 #--- Start the timer
 t1=$(date +"%s")
 
@@ -20,13 +21,15 @@ module load bwa
 module load samtools
 module load bcftools
 
-genome=~/90day_aphid/snp/aphis/Aphis_fabae_JIC1_v2.scaffolds.braker.filtered.cds.fa
-genome2=~/90day_aphid/snp/myzus/Myzus_varians_v1.1.scaffolds.braker.filtered.cds.LTPG.fa
+#genome=Phorodon_humuli_v2_scaffolds.braker.filtered.cds.LTPG.fa
+genome=Aphis_gossypii_1033E_v1.scaffolds.braker.cds.LTPG.fa
+#shortname= ${base//*\/}
+# genome2=~/90day_aphid/snp/myzus/Myzus_varians_v1.1.scaffolds.braker.filtered.cds.LTPG.fa
 
 # Editing this to include the scaffolds from Mathers
-
+bwa mem -t 8 $genome $base | samtools sort -@8 -o $bamname
 #bwa mem -t 8 $genome ~/90day_aphid/raw_data/Frozen_release/Aphis_rumicis/v1/Aphis_rumicis_v1.scaffolds.fa | samtools sort -@8 -o aphis/bam/Aphis_rumicis_v1.aligned.sorted.bam -
-bwa mem -t 8 $genome ~/90day_aphid/raw_data/Frozen_release/Aphis_gossypii/1033E_v1/Aphis_gossypii_1033E_v1.scaffolds.fa | samtools sort -@8 -o aphis/bam/Aphis_gossypii_1033E_v1.aligned.sorted.bam
+#bwa mem -t 8 $genome ~/90day_aphid/raw_data/Frozen_release/Aphis_gossypii/1033E_v1/Aphis_gossypii_1033E_v1.scaffolds.fa | samtools sort -@8 -o aphis/bam/Aphis_gossypii_1033E_v1.aligned.sorted.bam
 #bwa mem -t 8 $genome2 ~/90day_aphid/raw_data/Frozen_release/Aphis_fabae/JIC1_v2/Aphis_fabae_JIC1_v2.scaffolds.fa | samtools sort -@8 -o aphis/bam/Aphis_fabae_JIC1_v2.aligned.sorted.bam
 #bwa mem -t 8 $genome ~/90day_aphid/raw_data/Frozen_release/Aphis_thalictri/v1/Aphis_thalictri_v1.scaffolds.fa | samtools sort -@8 -o aphis/bam/Aphis_thalictri_v1.aligned.sorted.bam
 #bwa mem -t 8 $genome ~/90day_aphid/raw_data/Frozen_release/Annotation_only/Aphis_glycines/Aphis_glycines_4.v2.1.scaffolds.fa | samtools sort -@8 -o aphis/bam/Aphis_glycines_4.v2.1.aligned.sorted.bam
