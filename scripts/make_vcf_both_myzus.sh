@@ -24,12 +24,12 @@ genome=Phorodon_humuli_v2_scaffolds.braker.filtered.cds.LTPG.fa
 
 fq1=~/90day_aphid/raw_data/aphid_shotgun_sequencing_trimmed/${base}*1.fastq.gz
     fq2=~/90day_aphid/raw_data/aphid_shotgun_sequencing_trimmed/${base}*2.fastq.gz
-    sam=~/90day_aphid/snp/aphis/sam/${base}.aligned.sam
-    bam=~/90day_aphid/snp/aphis/bam/${base}.aligned.bam
-    sorted_bam=~/90day_aphid/snp/aphis/bam/${base}.aligned.sorted.bam
-    raw_bcf=~/90day_aphid/snp/aphis/bcf/${base}_raw.bcf
-    variants=~/90day_aphid/snp/aphis/vcf/${base}_variants.vcf
-    final_variants=~/90day_aphid/snp/aphis/vcf/${base}_final_variants.vcf 
+    sam=~/90day_aphid/snp/myzus/sam/${base}.aligned.sam
+    bam=~/90day_aphid/snp/myzus/bam/${base}.aligned.bam
+    sorted_bam=~/90day_aphid/snp/myzus/bam/${base}.aligned.sorted.bam
+    raw_bcf=~/90day_aphid/snp/myzus/bcf/${base}_raw.bcf
+    variants=~/90day_aphid/snp/myzus/vcf/${base}_variants.vcf
+    final_variants=~/90day_aphid/snp/myzus/vcf/${base}_final_variants.vcf 
 
     bwa mem $genome $fq1 $fq2 > $sam
     samtools view -S -b $sam > $bam
