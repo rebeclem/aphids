@@ -5,6 +5,7 @@ Aphids are important disease transmitters for plant diseases. Sometimes, ants ar
 * Do aphids and ants collected in a single collecting event share viruses?
 * Do all aphids or all ants share viruses?
 * Are any of the viruses we recover related to plants?
+* Are there more plant viruses in ants or aphids?
 * Characterizing them
 * Can any of them be used as possible biocontrol? 
 
