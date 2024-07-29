@@ -29,3 +29,4 @@ Here, we are looking at introgression and hybridization in two genera of aphids:
 * Analysis for mitochondrial genome assembly of [Melanaphis](Melanaphis.md)
 * Trying to understand aphis/myzus [possible hybrids](possibleHybrids.md)
 * Using [Blobtools](blobtools.md) to look for contamination
+* [Aphid/ant virus](aphid_ant.md)
