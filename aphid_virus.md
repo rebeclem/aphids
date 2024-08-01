@@ -10,7 +10,7 @@ Aphids are important disease transmitters for plant diseases. Sometimes, ants ar
 * Can any of them be used as possible biocontrol? 
 
 ## Steps
-0. [Sequencing](virus00sequencing.md) and file setup
-1. [Quality check](virus01qc.md) including fastqc, readcounts, what percentage rRNA? aphid?
+0. [Sequencing](virus00sequencing.md)
+1. [Quality check](virus01qc.md) including fastqc, and trimming, readcounts, what percentage rRNA? aphid?
 2. Assembly, mapping and taxonomic assignment and other [bioinformatics](virus02assembly.md)
 3. [Differential abundance](virus03abundance)
