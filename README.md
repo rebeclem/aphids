@@ -20,7 +20,7 @@ Here, we are looking at introgression and hybridization in two genera of aphids:
 4) [Build a tree](treebuilding.md) using the orthologs
 5) Use [snaQ](snaq.md) to search for hybridization events using networks.
 6) Use [bpp](bpp.md) to evaluate parameters of hybridization events
-7) [Get haplotype phasing](haplotype.md) to be able to evaluate admixture.
+7) [Get SNPs](haplotype.md) to be able to evaluate admixture.
 5) Time the tree
 6) Find synteny
 
