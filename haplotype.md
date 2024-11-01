@@ -10,6 +10,7 @@ The basic workflow is (referenceing [this](https://sateeshperi.github.io/nextflo
 5. To do this:
    * First make a directory called snp to run the analysis in with subdirectories for Aphis and Myzus
    * Then copy the reference file from [Mathers et al ](https://zenodo.org/record/5908005#.ZC885-zMIea) to that directory.
+   * It might actually be better to use the refseq [A. gossypii genome](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_020184175.1/).
    * Next, make a list of names you want to get variant files for: `for fq1 in ~/90day_aphid/aphis/hybpiper/APHD*_R1_A_trim.fastq.gz;  do base=$(basename $fq1 _R1_A_trim.fastq.gz);  echo "$base"; done > SampNames.txt`
    * On an interactive node, load the bwa module and make index files for the reference file: `bwa index Aphis_fabae_JIC1_v2.scaffolds.braker.filtered.cds.fa`
      * I'm going to redo this with Aphis gossypii so I can get snps from A. fabae I hope. For Myzus, I'll use
