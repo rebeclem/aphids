@@ -15,9 +15,10 @@ t1=$(date +"%s")
 
 textfile=~/90day_aphid/snp/aphis/bam/aphis_pop.txt
 vcffile=~/90day_aphid/snp/aphis/bam/aphis_output_snps-only_max_missing_1_mac_3_minq_50.recode.vcf
+treefile=~/90day_aphid/snp/aphis/aphis_tre.nwk
 
 # run dsuite
-~/90day_aphid/snp/Dsuite/Build/Dsuite Dtrios $vcffile $textfile
+~/90day_aphid/snp/Dsuite/Build/Dsuite Dtrios -t $treefile $vcffile $textfile
 
 #---Complete job
 t2=$(date +"%s")
