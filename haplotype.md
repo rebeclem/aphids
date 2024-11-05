@@ -54,7 +54,7 @@ $ git clone https://github.com/millanek/Dsuite.git
 $ cd Dsuite
 $ make
 ```
-10. Run the [dsuite.sh](scripts/dsuite_aphis.sh) using your filtered vcf file and this pop.txt file.
+10. Run the [dsuite.sh](scripts/dsuite_aphis.sh) using your filtered vcf file and this pop.txt file. It is important to also use a tree in a nwk file.
 
 ### Interpreting dsuite results
 Dsuite will output a file that ends in BBAA.txt and one that ends in dmin.txt.
