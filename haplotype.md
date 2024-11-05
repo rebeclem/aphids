@@ -57,7 +57,7 @@ $ make
 10. Run the [dsuite.sh](scripts/dsuite_aphis.sh) using your filtered vcf file and this pop.txt file. It is important to also use a tree in a nwk file.
 
 ### Interpreting dsuite results
-Dsuite will output a file that ends in BBAA.txt and one that ends in dmin.txt.
+  * Dsuite will output a file that ends in BBAA.txt and one that ends in dmin.txt.
     * Use this [r script](scripts/dsuite.R) to calculate what proportion are significant
     * Next, download these scripts plot_d.rb and plot_f4ratio.rb from [this site](https://github.com/mmatschiner/tutorials/tree/master/analysis_of_introgression_with_snp_data)
     * Then, make a text file that has the species names using `cut -f 2 myzus_pop.txt | sort | uniq > myzus_plot_order.txt` or any order you want
